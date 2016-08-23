@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  word: MyString
+  definition: MyText
+  literable_id: 
+  literable_type: Literable
+
+two:
+  word: MyString
+  definition: MyText
+  literable_id: 
+  literable_type: Literable

@@ -1,0 +1,3 @@
+
+//Chemicals by item 
+@chemicals = ItemChemShip.joins(:chemical).select("item_chem_ships.*, chemicals.name")

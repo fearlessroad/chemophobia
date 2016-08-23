@@ -1,0 +1,13 @@
+		<div id="wrapper">
+			<div id="sidebar">
+				<h2>Welcome to Chem<span class="italic">Query</span>!</h2>
+				<p>Striving to deliver only facts backed by science</p>
+				<h4>Chemical Spotlight</h4>
+				<h4>GMO Spotlight</h4>
+			</div>	
+			<div id="main">
+				<form action='/items' method='get'>
+				<input name='authenticity_token' value='<%= form_authenticity_token %>' type='hidden'>
+				<button id="goToApp"><h2>What's in YOUR food?</h2></button></form>
+			</div>
+		</div>

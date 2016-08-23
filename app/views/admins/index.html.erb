@@ -1,0 +1,20 @@
+<div id="admin_login">
+	<div id="admin_container">
+		<FIELDSET class="layout">
+			<legend>Admin Login</legend>
+
+			<% if flash[:errors] %>
+				<% flash[:errors].each do |e| %>
+					<p class="errors"><%= e %>
+				<% end %>
+			<% end %>
+
+			<form action="/admins" method="post">
+				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+				<label>Email</label><input type="email" name="email"><br>
+				<label>Password</label><input type="password" name="password"><br>
+				<button>Login</button>
+			</form>
+		</FIELDSET>
+	</div>
+</div>

@@ -1,0 +1,127 @@
+// Place all the styles related to the Items controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#itemcontainer {
+	overflow:hidden;
+	text-align:center;
+	padding:20px;
+}
+
+#items fieldset{
+	width:70%;
+	margin-left:0px;
+	display: inline-block;
+	float:right;
+	vertical-align:top;
+}
+#items label, input, textarea{
+	display:block;
+	width:150px;
+	margin-bottom:10px;
+	float:left;
+}
+
+#itemcontainer select{
+	float:left;
+}
+#items form{
+	display:inline-block;
+}
+.appended{
+	display:inline-block;
+	width: 170px;
+	float:left;
+}
+#items button{
+	display:inline-block;
+}
+#items button:hover{
+	color:white;
+	background-color:black;
+}
+#items table{
+	text-align:left;
+	margin:0 auto;
+}
+.chemical_box{
+	padding:5px;
+	background-color:green;
+	display:inline-block;
+}
+.success{
+	font-weight:bold;
+	display:inline-block;
+	vertical-align:top;
+	margin:5px;
+	padding:5px;
+	float:left;
+}
+.appendedsubcat input[type=checkbox]{
+	margin:0px;
+	padding:0px;
+	text-align:left;
+	float:left;
+	width:50px;
+}
+#additem table{
+}
+#additem{
+	background-color:#b3ffff;
+	padding:10px;
+}
+#additem img{
+	height:100px;
+}
+#chemicals{
+	padding:10px;
+	background-color:#b3ff99;
+}
+#added_chemicals table{
+	width:90%;
+	text-align:center;
+}
+td{
+	padding:5px;
+}
+#percent{
+	width:60px;
+}
+#added_chemicals button{
+	margin: 0 10px;
+}
+#all_items_box img{
+	height:130px;
+	width:130px;
+}
+#added_chemicals{
+	padding:10px;
+}
+#editing_chemicals{
+	padding:10px;
+}
+.added{
+	padding:10px;
+	background-color:#66ccff;
+	width:50px;
+	margin:5px auto;
+	border-radius:5px;
+	display:inline-block;
+	vertical-align:top;
+}
+.added:hover{
+	padding:10px;
+	background-color:#b3ff99;
+	width:50px;
+	margin:5px auto;
+	border-radius:5px;
+	display:inline-block;
+	vertical-align:top;
+	font-style:italic;
+}
+#sidebar a{
+	color:black;
+	text-decoration:none;
+}
+#sidebar a:hover{
+	font-style:italic;
+}

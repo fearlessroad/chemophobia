@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  chem_cat_id: 
+  chem_subcat_id: 
+  chemical_id: 
+
+two:
+  chem_cat_id: 
+  chem_subcat_id: 
+  chemical_id: 

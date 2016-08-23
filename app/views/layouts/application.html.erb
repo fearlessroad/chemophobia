@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chemophilia</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div id="container">
+	<div id="header">
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li><a href="#">About</a></li>
+			<li><a href="#">Chemophobia</a></li>
+			<li><a href="#">Literacy</a></li>
+			<li><a href="#">App</a></li>
+			<li class="search">
+				<input type="search" name="search">
+			</li>
+			<li class="search">Search</li>
+		</ul>
+	</div>
+
+		<%= yield %>
+</div>
+<div id="footer">&#169; ABIGAIL DOMMER | <a href="/admins">Admins</a> | <a href="#">Contact</a> | 
+<% if session[:admin_id] %> <a href="/admins" data-method="delete">Logout</a> <% end %>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,128 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+*{
+font-family: "NotoNashkArabic", "Helvetica Neue", "Helvetica", Roboto, Arial, sans-serif;
+}
+#admin_container label, input, textarea{
+	display:block;
+	width:150px;
+	float:left;
+	margin-bottom:10px;
+	overflow:hidden;
+}
+#admin_container label{
+	text-align:right;
+	padding-right:20px;
+}
+br{
+	clear:left;
+}
+.errors{
+	color:red;
+}
+#header a{
+	text-decoration: none;
+	color:white;
+}
+#header a:hover{
+	color:#ffff66;
+	font-style:italic;
+}
+.italic{
+	font-style:italic;
+}
+#container{
+	height:auto;
+/*	width: 960px;*/
+	width: 90%;
+	margin:0 auto;
+	border:1px solid black;
+	overflow:hidden;
+}
+#header{
+	/*background-color:#4d4d4d;*/
+	background-color:rgba(0, 0, 0, 0.9);
+	color:white;
+	padding:5px;
+}
+#header ul{
+	list-style:none;
+	list-style-type:none;
+}
+#header ul li{
+	display:inline;
+}
+#header li{
+	margin:0 5px;
+}
+#header .search{
+float:right;
+}
+input[type="search"]{
+	border-radius:7px
+}
+#wrapper{
+	background-image: url('vegetables.jpg');
+	background-image: url('items/vegetables.jpg');
+}
+#sidebar{
+	height:480px;
+	width:20%;
+	/*background-color:#99ffcc;*/
+	padding:3%;
+	background-color:#ffff66;
+	display:inline-block;
+	margin:0px;
+	float:left;
+}
+#sidebar p{
+	margin:0;
+	font-family:serif;
+	font-style:italic;
+}
+#main{
+	display:inline-block;
+	vertical-align:top;
+	width:73%;
+	color:white;
+	text-align:center;
+}
+#goToApp{
+	height:auto;
+	width:auto;
+	background-color:rgba(0, 0, 0, 0.9);
+	color:white;
+	margin-top:30%;
+	border-radius:20px;
+	padding:30px;
+}
+#goToApp:hover{
+	/*background-color:rgba(0, 0, 0, 0);*/
+	background-color:#ffff66;
+	color:black;
+}
+#footer{
+/*	width: 960px;*/
+	width: 90%;
+	height:auto;
+	margin: 5px auto;
+	color: grey;
+	text-align:center;
+}
+#footer a{
+	text-decoration: none;
+	color:grey;

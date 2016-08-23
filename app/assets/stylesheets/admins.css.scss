@@ -1,0 +1,19 @@
+// Place all the styles related to the Admins controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#admin_login{
+	text-align:center;
+	width:960px;
+}
+#admin_container{
+	margin:20px auto;
+}
+fieldset{
+	width:500px;
+	margin:10px auto;
+}
+fieldset button{
+	float:center;
+	margin-right:25px;
+	background-color:white;
+}

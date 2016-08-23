@@ -1,0 +1,59 @@
+
+<script>
+$(document).ready(function(){
+
+$('a').click(function(e){
+	e.preventDefault();
+	$.post(
+		$(this).attr('href'),
+		$(this).serialize(),
+		function(data){
+			console.log("hi");
+			console.log(data);
+			var tags = "";
+			for (i=0; i<data.categories.length; i++){
+				if (i==data.categories.length -1){
+					tags += "<a href='/categories/subcats/"+data.categories[i].subcat_id+"'>#"+data.categories[i].subcat_name +"</a>, <a href='/categories/cats/"+data.categories[i].cat_id+"'>#"+data.categories[i].cat_name+"</a>";
+				}
+				else {
+					tags += "<a href='/categories/subcats/"+data.categories[i].subcat_id + "'>#"+data.categories[i].subcat_name+"</a>, ";
+				}
+			}
+			var info = "<h3>Chemical Literacy</h3><ul><li><h4>Name: </h4> "+data.chemical.name+"</li><li><img src='/assets/"+data.chemical.image+"'></li><li><h4>IUPAC:</h4> "+data.chemical.iupac+"</li><li><h4>Formula: </h4> "+data.chemical.formula+"</li><li><h4>LD50:</h4> "+data.chemical.ld50+" mg/kg</li><li><h4>Description: </h4> "+data.chemical.description+"</li><li><h4>Categories:</h4> "+tags+"</li></ul>"; 
+			$("#literacy_sidebar").html(info);
+			$("#display_box").css("width", "70%");
+			// $("#literacy_sidebar").append(image);
+		}, "json" );
+	return false;
+});
+
+
+});
+</script>
+
+<div id="itemcontainer">
+	<div id="literacy_sidebar">
+	</div>
+	<div id="display_box">
+	<!-- two column format -->
+		<div class="column1">
+			<div class="item_pic"><%= image_tag(@item.image)%></div>
+			<h3><%= @item.name %></h3>
+			<p><%= @item.description%></p>
+		</div>
+	<!-- Second column -->
+		<div class="column2">
+			<div class="item_content">
+				<h4>Chemicals</h4>
+					<p><% @chemicals.each do |c| %>
+					<% if c == @chemicals.last %>
+						<a href="/chemicals/<%= c.chemical_id%>"><%= c.name %></a> (<%= c.percentage %>%)
+					<% else %>
+						<a href="/chemicals/<%=c.chemical_id%>"><%= c.name %></a> (<%= c.percentage %>%),
+					<% end %>
+					<% end %></p>
+				<h4>Genetic Modifications</h4>
+			</div>
+		</div>
+	</div>
+</div>
