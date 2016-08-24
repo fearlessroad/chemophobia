@@ -51,19 +51,19 @@ var edit = "<input type='file' name='chemical[image]' accept='image/*'><br>";
 
 
 <div id="itemcontainer">
-<div id="sidebar">
-	<h3>Welcome, <%= @admin.username %>, you lovely person!</h3>
-	<h5>Here are some useful links:</h5>
-	<a href="#">Add Item</a><br>
-	<a href="#">Edit Item</a><br>
-	<a href="#">Add Chemicals</a><br>
-	<a href="#">Categories</a><br>
-	<a href="#">Literacies</a><br>
-	<a href="#">GMOs</a><br>
+	<div id="sidebar">
+		<h3>Welcome, <%= @admin.username %>, you lovely person!</h3>
+		<h5>Here are some useful links:</h5>
+		<a href="#">Add Item</a><br>
+		<a href="#">Edit Item</a><br>
+		<a href="#">Add Chemicals</a><br>
+		<a href="#">Categories</a><br>
+		<a href="#">Literacies</a><br>
+		<a href="#">GMOs</a><br>
 
-</div>
-	<div id="items">
+	</div>
 		<FIELDSET>
+		<div id="items">
 		<% if flash[:errors] %>
 		<% flash[:errors].each do |e| %>
 		<%= e %>
@@ -75,34 +75,11 @@ var edit = "<input type='file' name='chemical[image]' accept='image/*'><br>";
 		<%= s %>
 		<% end %>
 		<% end %>
-		<% if session[:item_id] %>
-		<div id="items">
-				<h3>Current Item: <%=@currentItem.name%><a href="/items/new"></h3><button>Edit <%=@currentItem.name%></button></a></h3>
-<!-- this part renders the added item -->
-					<!-- <table>
-						<tr>
-							<td>Name:</td>
-							<td><span class='success'><%=@currentItem.name%></span></td>
-						</tr>
-						<tr>
-							<td>Description:</td>
-							<td><span class='success'><%=@currentItem.description%></span></td>
-						</tr>
-						<tr>
-							<td>Image:</td>
-							<td><span class='success'><%= image_tag(@currentItem.image) %></span></td>
-						</tr>
-					</table> -->
-<!-- 					<form action="/items/new" method="post">
-					<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden"> -->
-<!-- 				</form> -->
-<!-- 					<form action= "/items/destroy/<%=session[:item_id]%>" method="post">
-						<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-						<button>Delete</button>
-					</form> -->
-		</div>
+			<div>
+					<h3>Current Item: <%=@currentItem.name%><a href="/items/new"></h3><button>Edit <%=@currentItem.name%></button></a></h3>
+			</div>
 
-		<!-- edit chemical -->
+<!-- edit chemical -->
 
 <!-- this part renders all added chemicals for this particular item -->
 	<div id="added_chemicals">
@@ -139,9 +116,9 @@ var edit = "<input type='file' name='chemical[image]' accept='image/*'><br>";
 <%end%>
 
 <!-- this part renders categories assuming user has confirmed item -->
-<!-- 		<%if session[:confirmed] %> -->
+<%if session[:confirmed] && session[:chemical_id] %> 
 <!-- renders the current chemical information -->
-<!-- 		<div id="editing_chemicals">
+	<div id="editing_chemicals">
 			<h3>Current Chemical Details</h3>
 			<table>
 					<tr><td>Name</td><td><%= @currentChemical.name%></td><br></tr>
@@ -160,56 +137,20 @@ var edit = "<input type='file' name='chemical[image]' accept='image/*'><br>";
 			<form id ="add_another_chemical" action="/admins/chemical" method="post">
 				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden"> -->
 			<!-- if we want to add another chemical, this button will reset all sessions EXCEPT item id -->
-<!-- 			<button>Submit & Add Another</button>
+			<button>Submit & Add Another</button>
 			</form>
-		</div>
+	</div>
 		<% else %>
 			</table>
-			<button>Edit</button><form> -->
+			<button>Edit</button><form> 
 			<!-- if we want to add another chemical, this button will reset all sessions EXCEPT item id -->
-<!-- 			<form id ="add_another_chemical" action="/admins/chemical" method="post">
+			<form id ="add_another_chemical" action="/admins/chemical" method="post">
 				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 			<button>Submit & Add Another</button>
 			</form>
-		</div> -->
-<!-- renders option to categorize the chemical -->
-<!-- 		<div id="categorize_chemical">
-			<h3>Add a Category & Subcategory</h3>
-			<table>
-				<thead>
-					<th>Category</th>
-					<th>Subcategory</th>
-					<th>Percentage</th>
-					<th>Action</th>
-				</thead>
-				<tbody>
-					<tr>
-						<td>
-							<form id ='select_a_category' action='/categories/selectCat' method='post'>
-								<input name='authenticity_token' value='<%= form_authenticity_token %>' type='hidden'>
-								<select name='category' id='cat'><% @categories.each do |category| %>
-									<option value='<%=category.id%>:<%=session[:chemical_id]%>'><%=category.name%></option>
-								<% end %></select><br>
-								<button>Add Category</button>
-							</form>
-						</td>
-						<td>
-							<form action='/categories' method='post'>
-							<input name='authenticity_token' value='<%= form_authenticity_token %>' type='hidden'>
-							<div class="appendedsubcat"></div>
-						</td>
-						<td>
-							<input type="text" id="percent" name="percentage">%
-						</td>
-						<td>
-							<button>Categorize</button></form>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
 		<% end %>
-		<% end %> -->
+	</div>
+<% end %>
 
 <!-- this part renders a new form for adding a chemical -->
 <% if !session[:chemical_id] %>
@@ -233,34 +174,20 @@ var edit = "<input type='file' name='chemical[image]' accept='image/*'><br>";
 		</div>
 <% end %>
 
-<!-- 	<% if @addedChemicals %>
-	<div id="finalize"> -->
+<% if @addedChemicals %>
+	<div id="finalize"> 
 <!-- if we want to add another chemical, this button will reset all sessions EXCEPT item id -->
-<!-- 		<form id ="add_another_chemical" action="/chemicals/resetSession" method="post">
+		<form id ="add_another_chemical" action="/chemicals/resetSession" method="post">
 			<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 			<button>Add Another Chemical</button>
-		</form> -->
+		</form>
 <!-- This button will reset session completely so you can add another item -->
-<!-- 		<form action="/items/reset" method="post">
+		<form action="/items/reset" method="post">
 			<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 			<button>Finish!</button>
 		</form>
 	</div>
-	<% end %> -->
-
-
-<!-- <% else %>
-	<form id ="add_an_item" action="/items" method="post">
-	<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-	<label>Name</label><div id="item_name" class="appended"><input type="text" name="item[name]"></div><br>
-	<label>Description</label>
-		<div id="item_description" class="appended"><textarea name="item[description]"></textarea></div><br>
-	<label>Upload Image</label><input type="file" name="item[image]" accept="image/*"><br>
-	<button class="add1">Add Item!</button><br>
-	</form>
-</div> -->
 <% end %>
-
+		</div>
 		</FIELDSET>
 	</div>
-</div>

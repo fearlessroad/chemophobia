@@ -4,12 +4,13 @@ class ChemicalsController < ApplicationController
 	  	@categories = ChemCat.all
 	  	@subcategories = ChemSubcat.all
 	  	@admin = Admin.find(session[:admin_id])
-	  	if session[:item_id]
-	  		@currentItem = Item.find(session[:item_id])
-	  		@addedChemicals = ItemChemShip.joins(:chemical).select("chemicals.name, chemicals.id").where(item: Item.find(session[:item_id]))
-	  	end
+	  	@currentItem = Item.find(session[:item_id])
+	  	@addedChemicals = ItemChemShip.joins(:chemical).select("chemicals.name, chemicals.id").where(item: Item.find(session[:item_id]))
 	  	if session[:chemical_id]
 	  		@currentChemical = Chemical.find(session[:chemical_id])
+	  	end
+	  	if !session[:item_id]
+	  		redirect_to 'items/new'
 	  	end
 	end
 	def create
