@@ -80,7 +80,7 @@ input[type="search"]{
 	background-image: url('items/vegetables.jpg');
 }
 #sidebar{
-	height:480px;
+/*	height:480px;*/
 	width:20%;
 	/*background-color:#99ffcc;*/
 	padding:3%;

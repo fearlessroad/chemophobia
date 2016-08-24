@@ -4,19 +4,19 @@ class ItemsController < ApplicationController
 	def new
 	    if session[:item_id]
 	  	 @currentItem = Item.find(session[:item_id])
-	  	 @addedChemicals = ItemChemShip.joins(:chemical).select("chemicals.name, chemicals.id").where(item: Item.find(session[:item_id]))
+	  	 # @addedChemicals = ItemChemShip.joins(:chemical).select("chemicals.name, chemicals.id").where(item: Item.find(session[:item_id]))
 	  	end
-	  	if session[:chemical_id]
-	  	 @currentChemical = Chemical.find(session[:chemical_id])
+	  	# if session[:chemical_id]
+	  	#  @currentChemical = Chemical.find(session[:chemical_id])
 	  	
 
 	# ItemChemRelationships.joins(:chemical).select("chemicals.name, chemicals.id, chemicals.chemical_category_id").joins(:chemical_category).select("chemical_category.name as chemcat_name, chemical_category.id as chemcat_id")
 
-	    end
+	    # end
 	    @admin = Admin.find(session[:admin_id])
-	    @chemicals = Chemical.all
-	  	@categories = ChemCat.all
-	  	@subcategories = ChemSubcat.all
+	   #  @chemicals = Chemical.all
+	  	# @categories = ChemCat.all
+	  	# @subcategories = ChemSubcat.all
 	end
 	def create 
 		item = Item.find_by(item_params)
