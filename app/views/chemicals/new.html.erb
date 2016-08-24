@@ -99,11 +99,14 @@ var edit = "<input type='file' name='chemical[image]' accept='image/*'><br>";
 							<td><span class='success'><%= image_tag(@currentItem.image) %></span></td>
 						</tr>
 					</table>
-					<form><button>Edit</button></form>
-					<form action= "/items/destroy/<%=session[:item_id]%>" method="post">
+<!-- 					<form action="/items/new" method="post">
+					<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden"> -->
+					<a href="/items/new"><button>Edit</button></a>
+<!-- 				</form> -->
+<!-- 					<form action= "/items/destroy/<%=session[:item_id]%>" method="post">
 						<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 						<button>Delete</button>
-					</form>
+					</form> -->
 		</div>
 <!-- this part renders all added chemicals for this particular item -->
 	<div id="added_chemicals">

@@ -16,10 +16,11 @@ Rails.application.routes.draw do
   patch '/items' => 'items#update'
   post 'items/confirm' => 'items#confirm'
 
-  # admin login
+  # admin and sessions
   post '/admins' => 'admins#login'
   get '/items/new' => 'items#new'
   delete '/admins' => 'admins#destroy'
+  post '/admins/item'=>'admins#item'
 
   # adding chemicals
   post '/chemicals'=>'chemicals#create'

@@ -18,4 +18,11 @@ class AdminsController < ApplicationController
 	    reset_session
 	    redirect_to :root
 	end
+	def item
+		session[:item_id] = nil
+	    session[:chemical_id] = nil
+	    redirect_to :back
+	end
+	def chemical 
+	end
 end

@@ -1,4 +1,3 @@
-<script src="numeral.min.js"></script>
 <script>
 
 var edit = "<input type='file' name='item[image]'><br>";
@@ -23,7 +22,7 @@ var edit = "<input type='file' name='item[image]'><br>";
 	<div id="sidebar">
 		<h3>Welcome, <%= @admin.username %>, you lovely person!</h3>
 		<h5>Here are some useful links:</h5>
-		<a href="#">Add Item</a><br>
+		<a href="/items/new">Add Item</a><br>
 		<a href="#">Edit an item</a><br>
 		<a href="#">Literacies</a><br>
 		<a href="#">GMOs</a><br>
@@ -32,8 +31,8 @@ var edit = "<input type='file' name='item[image]'><br>";
 	</div>
 	<div id="items">
 		<FIELDSET>
-			<h3>Add an Item!</h3>
 <% if @currentItem %>
+			<h3>Edit an Item!</h3>
 			<form id="edit_added_item" action="/items" method="post">
 				<input name="_method" type="hidden" value="patch">
 				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
@@ -47,13 +46,17 @@ var edit = "<input type='file' name='item[image]'><br>";
 					<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 					<button>Confirm Item</button>
 				</form>
+				<form action="/admins/item" method="post">
+					<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+					<button>Add a New Item</button>
+				</form>
 <% else%>
 				<% if flash[:errors] %>
 					<% flash[:errors].each do |e| %>
 						<%= e %>
 					<% end %>
 				<% end %>
-		
+			<h3>Add an Item!</h3>
 			<form id ="add_an_item" action="/items" method="post">
 				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 				<label>Name</label><div id="item_name" class="appended"><input type="text" name="item[name]"></div><br>
