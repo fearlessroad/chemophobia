@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
 	def index
+		offset = rand(Chemical.count)
+		@chemical = Chemical.offset(offset).first
 	end
 	def new
 	    if session[:item_id]

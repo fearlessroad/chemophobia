@@ -77,13 +77,16 @@ input[type="search"]{
 }
 #wrapper{
 	background-image: url('vegetables.jpg');
-	background-image: url('items/vegetables.jpg');
+	height:100%;
+	overflow:hidden;
+/*	background-image: url('items/vegetables.jpg');*/
 }
 #sidebar{
 /*	height:480px;*/
 	width:20%;
+	height:100%;
 	/*background-color:#99ffcc;*/
-	padding:3%;
+	padding:2%;
 	background-color:#ffff66;
 	display:inline-block;
 	margin:0px;
@@ -93,6 +96,9 @@ input[type="search"]{
 	margin:0;
 	font-family:serif;
 	font-style:italic;
+}
+#sidebar img{
+	width:90%;
 }
 #main{
 	display:inline-block;

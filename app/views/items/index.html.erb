@@ -3,7 +3,11 @@
 				<h2>Welcome to Chem<span class="italic">Query</span>!</h2>
 				<p>Striving to deliver only facts backed by science</p>
 				<h4>Chemical Spotlight</h4>
+				<%= image_tag(@chemical.image)%>
+				<h5>Name: <%=@chemical.name%></h5>
+				<p><%= @chemical.description%></p>
 				<h4>GMO Spotlight</h4>
+				<p>None at the moment :(</p>
 			</div>	
 			<div id="main">
 				<a href="/items"><button id="goToApp"><h2>What's in YOUR food?</h2></button></a>
