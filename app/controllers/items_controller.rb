@@ -18,6 +18,11 @@ class ItemsController < ApplicationController
 	  	# @categories = ChemCat.all
 	  	# @subcategories = ChemSubcat.all
 	end
+	def update
+		item = Item.find(session[:item_id])
+		item.update(item_params)
+		redirect_to :back
+	end
 	def create 
 		item = Item.find_by(item_params)
 		if item
@@ -34,19 +39,23 @@ class ItemsController < ApplicationController
 		  	end
 		end
 	end
+	def confirm
+		flash[:success]= ["Your item has been added! You can now add chemicals to the item!"]
+		redirect_to "/chemicals/new";
+	end
 	def destroy 
 	    Item.find(session[:item_id]).destroy
 	    session[:item_id] = nil
 	    session[:chemical_id] = nil
 	    redirect_to :back
-	  end
-	 def reset
-	 	session[:item_id]=nil
-	 	session[:chemical_id]= nil
-	 	session[:category_id]= nil
-	 	session[:confirmed]=nil
-	 	redirect_to :back
 	 end
+	 # def reset
+	 # 	session[:item_id]=nil
+	 # 	session[:chemical_id]= nil
+	 # 	session[:category_id]= nil
+	 # 	session[:confirmed]=nil
+	 # 	redirect_to :back
+	 # end
 	 def show
 	 	@items = Item.all
 	 end

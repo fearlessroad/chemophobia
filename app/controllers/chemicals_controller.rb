@@ -1,4 +1,11 @@
 class ChemicalsController < ApplicationController
+	def new
+		@chemicals = Chemical.all
+	  	@categories = ChemCat.all
+	  	@subcategories = ChemSubcat.all
+	  	@admin = Admin.find(session[:admin_id])
+	  	@currentItem = Item.find(session[:item_id])
+	end
 	def create
 		if params[:chemicalSelected] == ""
 			chemical = Chemical.find_by(name: params[:chemicalWritten])

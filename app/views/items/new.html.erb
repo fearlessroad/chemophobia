@@ -1,51 +1,20 @@
 <script src="numeral.min.js"></script>
 <script>
 
+var edit = "<input type='file' name='item[image]'><br>";
 
-// var addNewChemical = "<label>IUPAC name</label><input type='text' name='iupac'><br><label>Formula</label><input type='text' name='formula'><br><label>Description</label><input type='text' name='description'><br><label>LD50</label><input type='number' name='ld50'><br><label>Origin</label><input type='text' name='origin'><br>";
+	$(document).ready(function(){
+	
+		$('#confirm_chemical').click(function(){
+			console.log("confirmed!");
+			$("#categorize").html(addCategories);
+		});
+		$('img').click(function(){
+			console.log("clicked image!");
+			$('#edit_image').append(edit);
+		});
 
-
-
-	// $(document).ready(function(){
-	// 	$("#addNewChemical").click(function(){
-	// 		console.log("we are hovering");
-	// 		$("#adding_a_new_chemical").html(addNewChemical);
-	// 	});
-	// 	$('#confirm_chemical').click(function(){
-	// 		console.log("confirmed!");
-	// 		$("#categorize").html(addCategories);
-	// 	});
-	// 	$('#select_a_category').submit(function(e){
-	// 		e.preventDefault();
-	// 		$.post(
-	// 			$(this).attr('action'),
-	// 			$(this).serialize(),
-	// 			function(data){
-	// 				console.log(data);
-	// 			for (i=0; i<data.subcategories.length; i++)
-	// 			{
-	// 				var id = data.subcategories[i].id
-	// 				var subcategory = "<input type='checkbox' name='subcat[]' value="+id+">"+data.subcategories[i].name+"</input><br>";
-	// 				if (i==0){
-	// 					$('.appendedsubcat').html(subcategory);
-	// 				}
-	// 				else{
-	// 				$('.appendedsubcat').append(subcategory);
-	// 				}
-	// 			}
-	// 			}, 
-	// 			'json');
-	// 		return false;
-	// 		});
-	// 	$("#percent").keyup(function(e){
-	// 		if(e.keyCode !=8){
-	// 			if($(this).val().length==2){
-	// 				$(this).val($(this).val()+".");
-	// 			}
-	// 		}
-	// 	});
-
-	// 	});
+	});
 
 </script>
 
@@ -65,15 +34,19 @@
 		<FIELDSET>
 			<h3>Add an Item!</h3>
 <% if @currentItem %>
-			<form id="edit_added_item" action="/items" method="post">
+			<form id="edit_added_item" action="/items/<%=@currentItem.id%>" method="post">
 				<input name="_method" type="hidden" value="patch">
 				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 				<label>Name</label><input type="text" name="item[name]" value="<%=@currentItem.name%>"><br>
 				<label>Description</label><textarea name="item[description]"><%=@currentItem.description%></textarea><br>
-				<label>Image</label><%= image_tag(@currentItem.image)%><br>
+				<label>Click Image to Edit</label><%= image_tag(@currentItem.image)%><br>
+				<div id="edit_image"></div>
 				<button>Edit Item</button>
 			</form>
-				<button id="confirm">Confirm Item</button>
+				<form action="/items/confirm" method="post">
+					<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+					<button>Confirm Item</button>
+				</form>
 <% else%>
 				<% if flash[:errors] %>
 					<% flash[:errors].each do |e| %>
@@ -90,5 +63,6 @@
 				<button class="add">Add Item!</button><br>
 			</form>
 <% end %>
+</div>
 		</FIELDSET>
 </div>

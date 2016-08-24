@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   post '/items' => 'items#create'
   post '/items/destroy/:id' =>'items#destroy'
   post '/items/reset' => 'items#reset'
+  patch '/items/:id' => 'items#update'
+  post 'items/confirm' => 'items#confirm'
 
   # admin login
   post '/admins' => 'admins#login'
@@ -22,6 +24,7 @@ Rails.application.routes.draw do
   # adding chemicals
   post '/chemicals'=>'chemicals#create'
   post '/chemicals/resetSession'=>'chemicals#resetSession'
+  get '/chemicals/new'=>'chemicals#new'
   post '/chemicals/:id' => 'chemicals#getInfo'
   get '/chemicals/:id' => 'chemicals#getInfo'
 
