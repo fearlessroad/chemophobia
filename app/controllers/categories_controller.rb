@@ -12,13 +12,21 @@ class CategoriesController < ApplicationController
 		redirect_to :back
 	end
 	def create
+		# params[:subcat] is an array containing all the subcategories
+
 		subcats = params[:subcat]
 		if subcats
-			subcats.each do |cat| 
-				ChemCatShip.create(chemical: Chemical.find(session[:chemical_id]), chem_cat: ChemCat.find(session[:category_id]), chem_subcat: ChemSubcat.find(cat))
+			subcats.each do |cat|  
+				ship = ChemCatShip.find_by(chemical: Chemical.find(session[:chemical_id]), chem_cat: ChemCat.find(session[:category_id]), chem_subcat: ChemSubcat.find(cat)) 
+				if !ship
+					ChemCatShip.create(chemical: Chemical.find(session[:chemical_id]), chem_cat: ChemCat.find(session[:category_id]), chem_subcat: ChemSubcat.find(cat)) 
+				end
 			end
 		end
-		ItemChemShip.where(chemical: Chemical.find(session[:chemical_id]), item: Item.find(session[:item_id])).update_all(percentage: params[:percentage])
+		# ItemChemShip.where(chemical: Chemical.find(session[:chemical_id]), item: Item.find(session[:item_id])).update_all(percentage: params[:percentage])
+		# session[:confirmed] = nil
+		session[:categorized] = true
+		session[:flash] = ["Your categories were added successfully"]
 		env["HTTP_REFERER"] += '#added_chemicals'
 		redirect_to :back
 	end

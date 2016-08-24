@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get '/items/new' => 'items#new'
   delete '/admins' => 'admins#destroy'
   post '/admins/item'=>'admins#item'
+  post '/admins/chemical'=>'admins#chemical'
 
   # adding chemicals
   post '/chemicals'=>'chemicals#create'
