@@ -76,7 +76,7 @@ var edit = "<input type='file' name='chemical[image]' accept='image/*'><br>";
 		<% end %>
 		<% end %>
 			<div>
-					<h3>Current Item: <%=@currentItem.name%><a href="/items/new"></h3><button>Edit <%=@currentItem.name%></button></a></h3>
+				<h3>Current Item: <%=@currentItem.name%><a href="/items/new"></h3><button>Edit <%=@currentItem.name%></button></a></h3>
 			</div>
 
 <!-- edit chemical -->
@@ -90,9 +90,9 @@ var edit = "<input type='file' name='chemical[image]' accept='image/*'><br>";
 		<% end %>
 		<% end %>
 	</div>
-	<!-- this renders current chemical -->
-<% if session[:chemical_id] && !session[:confirmed]%>
 
+	<!-- this renders current chemical -->
+<%if session[:chemical_id] %>
 		<div id="editing_chemicals">
 			<h3>Confirm <%= @currentChemical.name %> Details</h3>
 				<form id ='edit_chemical' action='/chemicals' method='post'>
@@ -111,49 +111,10 @@ var edit = "<input type='file' name='chemical[image]' accept='image/*'><br>";
 			</table>
 			<button id="edit_chemical">Edit</button></form>
 			<form id="confirm_chemical" action="/categories/confirm" method="post"><input name='authenticity_token' value='<%= form_authenticity_token %>' type='hidden'><button id="confirm_chemical">Confirm</button></form>
-		</div>
-
-<%end%>
-
-<!-- this part renders categories assuming user has confirmed item -->
-<%if session[:confirmed] && session[:chemical_id] %> 
+	</div>
+ <%else%>
 <!-- renders the current chemical information -->
 	<div id="editing_chemicals">
-			<h3>Current Chemical Details</h3>
-			<table>
-					<tr><td>Name</td><td><%= @currentChemical.name%></td><br></tr>
-					<tr><td>IUPAC</td><td><%= @currentChemical.iupac%></td><br></tr>
-					<tr><td>Formula</td><td><%= @currentChemical.formula%></td><br></tr>
-					<td>Description</td><td><%= @currentChemical.description%></td><br></tr>
-					<tr><td>LD50 (mg/kg)</td><td><%= @currentChemical.ld50%></td><br></tr>
-					<tr><td>Origin</td><td><%= @currentChemical.origin%></td><br></tr>
-					<tr><td>Image</td><td><%= image_tag(@currentChemical.image)%></td><br></tr>
-		<% if session[:categorized] %>
-					<tr><td>Category:</td><td>Some category</td></tr>
-					<tr><td>Subcategories:</td><td>list of subcategories</td></tr>
-					<tr><td>Percentage</td><td>%percent</td></tr>
-			</table>
-			<button>Edit</button>
-			<form id ="add_another_chemical" action="/admins/chemical" method="post">
-				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden"> -->
-			<!-- if we want to add another chemical, this button will reset all sessions EXCEPT item id -->
-			<button>Submit & Add Another</button>
-			</form>
-	</div>
-		<% else %>
-			</table>
-			<button>Edit</button><form> 
-			<!-- if we want to add another chemical, this button will reset all sessions EXCEPT item id -->
-			<form id ="add_another_chemical" action="/admins/chemical" method="post">
-				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-			<button>Submit & Add Another</button>
-			</form>
-		<% end %>
-	</div>
-<% end %>
-
-<!-- this part renders a new form for adding a chemical -->
-<% if !session[:chemical_id] %>
 		<div id="chemicals">
 			<h3>Add Chemical to Item</h3>
 			<form id ='add_a_chemical' action='/chemicals' method='post'>
@@ -172,22 +133,8 @@ var edit = "<input type='file' name='chemical[image]' accept='image/*'><br>";
 				<button>Add Chemical</button>
 			</form>
 		</div>
-<% end %>
-
-<% if @addedChemicals %>
-	<div id="finalize"> 
-<!-- if we want to add another chemical, this button will reset all sessions EXCEPT item id -->
-		<form id ="add_another_chemical" action="/chemicals/resetSession" method="post">
-			<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-			<button>Add Another Chemical</button>
-		</form>
-<!-- This button will reset session completely so you can add another item -->
-		<form action="/items/reset" method="post">
-			<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-			<button>Finish!</button>
-		</form>
 	</div>
 <% end %>
-		</div>
 		</FIELDSET>
 	</div>
+</div>
