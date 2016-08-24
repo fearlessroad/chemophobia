@@ -58,6 +58,7 @@ class ChemicalsController < ApplicationController
 		session[:chemical_id] = nil
 		session[:category_id] = nil
 		session[:confirmed] = nil
+		session[:categorized] = nil
 		redirect_to :back
 	end
 private

@@ -9,7 +9,7 @@ class CategoriesController < ApplicationController
 	def confirm
 		session[:confirmed] = true
 		env["HTTP_REFERER"] += '#categorize_chemical'
-		redirect_to :back
+		redirect_to "/categories/new"
 	end
 	def create
 		# params[:subcat] is an array containing all the subcategories
@@ -29,5 +29,11 @@ class CategoriesController < ApplicationController
 		session[:flash] = ["Your categories were added successfully"]
 		env["HTTP_REFERER"] += '#added_chemicals'
 		redirect_to :back
+	end
+	def new
+		@admin = Admin.find(session[:admin_id])
+		@currentItem = Item.find(session[:item_id])
+		@currentChemical = Chemical.find(session[:chemical_id])
+		@categories = ChemCat.all
 	end
 end

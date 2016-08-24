@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   post '/categories/selectCat' => 'categories#selectCat'
   post '/categories/confirm' => 'categories#confirm'
   post '/categories'=>'categories#create'
+  get '/categories/new'=>'categories#new'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
