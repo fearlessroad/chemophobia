@@ -1,52 +1,58 @@
-<script src="numeral.min.js"></script>
+
 <script>
 
 
-// var addNewChemical = "<label>IUPAC name</label><input type='text' name='iupac'><br><label>Formula</label><input type='text' name='formula'><br><label>Description</label><input type='text' name='description'><br><label>LD50</label><input type='number' name='ld50'><br><label>Origin</label><input type='text' name='origin'><br>";
+var addNewChemical = "<label>IUPAC name</label><input type='text' name='iupac'><br><label>Formula</label><input type='text' name='formula'><br><label>Description</label><input type='text' name='description'><br><label>LD50</label><input type='number' name='ld50'><br><label>Origin</label><input type='text' name='origin'><br><label>Image</label><input type='file' name='image'><br>";
+
+var edit = "<input type='file' name='chemical[image]' accept='image/*'><br>";
 
 // var categories = "<label>Category</label><select><% @categories.each do |category| %><option><%= category.name %></option><% end %></select><br>";
 
 
-	// $(document).ready(function(){
-	// 	$("#addNewChemical").click(function(){
-	// 		console.log("we are hovering");
-	// 		$("#adding_a_new_chemical").html(addNewChemical);
-	// 	});
-	// 	$('#confirm_chemical').click(function(){
-	// 		console.log("confirmed!");
-	// 		$("#categorize").html(addCategories);
-	// 	});
-	// 	$('#select_a_category').submit(function(e){
-	// 		e.preventDefault();
-	// 		$.post(
-	// 			$(this).attr('action'),
-	// 			$(this).serialize(),
-	// 			function(data){
-	// 				console.log(data);
-	// 			for (i=0; i<data.subcategories.length; i++)
-	// 			{
-	// 				var id = data.subcategories[i].id
-	// 				var subcategory = "<input type='checkbox' name='subcat[]' value="+id+">"+data.subcategories[i].name+"</input><br>";
-	// 				if (i==0){
-	// 					$('.appendedsubcat').html(subcategory);
-	// 				}
-	// 				else{
-	// 				$('.appendedsubcat').append(subcategory);
-	// 				}
-	// 			}
-	// 			}, 
-	// 			'json');
-	// 		return false;
-	// 		});
-	// 	$("#percent").keyup(function(e){
-	// 		if(e.keyCode !=8){
-	// 			if($(this).val().length==2){
-	// 				$(this).val($(this).val()+".");
-	// 			}
-	// 		}
-	// 	});
+	$(document).ready(function(){
+		$("#addNewChemical").click(function(){
+			console.log("we are hovering");
+			$("#adding_a_new_chemical").html(addNewChemical);
+		});
+		$('img').click(function(){
+			console.log("clicked the image");
+			$('#chemical_image_upload').append(edit);
+		})
+		$('#confirm_chemical').click(function(){
+			console.log("confirmed!");
+			$("#categorize").html(addCategories);
+		});
+		$('#select_a_category').submit(function(e){
+			e.preventDefault();
+			$.post(
+				$(this).attr('action'),
+				$(this).serialize(),
+				function(data){
+					console.log(data);
+				for (i=0; i<data.subcategories.length; i++)
+				{
+					var id = data.subcategories[i].id
+					var subcategory = "<input type='checkbox' name='subcat[]' value="+id+">"+data.subcategories[i].name+"</input><br>";
+					if (i==0){
+						$('.appendedsubcat').html(subcategory);
+					}
+					else{
+					$('.appendedsubcat').append(subcategory);
+					}
+				}
+				}, 
+				'json');
+			return false;
+			});
+		// $("#percent").keyup(function(e){
+		// 	if(e.keyCode !=8){
+		// 		if($(this).val().length==2){
+		// 			$(this).val($(this).val()+".");
+		// 		}
+		// 	}
+		// });
 
-	// 	});
+		});
 
 </script>
 
@@ -75,7 +81,7 @@
 		<%= s %>
 		<% end %>
 		<% end %>
-		<div id="additem">
+		<div id="items">
 			<h3>Add Item</h3>
 				<% if session[:item_id] %>
 <!-- this part renders the added item -->
@@ -99,6 +105,15 @@
 						<button>Delete</button>
 					</form>
 		</div>
+<!-- this part renders all added chemicals for this particular item -->
+	<div id="added_chemicals">
+		<%if @addedChemicals %>
+		<h3> Added Chemicals </h3>
+		<% @addedChemicals.each do |added| %>
+			<div class="added"><%= added.name %></div>
+		<% end %>
+		<% end %>
+	</div>
 
 <!-- this part renders a new form for adding a chemical -->
 
@@ -129,42 +144,17 @@
 
 		<div id="editing_chemicals">
 			<h3>Confirm <%= @currentChemical.name %> Details</h3>
-			<table>
-				<thead>
-					<th>Name</th>
-					<th>Value</th>
-				</thead>
-				<tbody>
 				<form id ='edit_chemical' action='/chemicals' method='post'>
 				<input name='authenticity_token' value='<%= form_authenticity_token %>' type='hidden'>
 				<input type="hidden" name="_method" value="patch">
-					<tr>
-						<td>Name</td>
-						<td><input type="text" name="name" value="<%= @currentChemical.name%>"></td>
-					</tr>
-					<tr>
-						<td>IUPAC</td>
-						<td><input type="text" name="iupac" value="<%= @currentChemical.iupac%>"></td>
-					</tr>
-					<tr>
-						<td>Formula</td>
-						<td><input type="text" name="formula" value="<%= @currentChemical.formula%>"></td>
-					</tr>
-					<tr>
-						<td>Image</td>
-						<td><input type="text" name="image" value="<%= @currentChemical.image%>"></td>
-					</tr>
-					<tr>
-						<td>Description</td>
-						<td><textarea name="description"><%= @currentChemical.description%></textarea></td>
-					</tr>
-					<tr>
-						<td>LD50 (mg/kg)</td>
-						<td><input type="text" name="ld50" value="<%= @currentChemical.ld50%>"></td>
-					</tr>
-					<tr>
-						<td>Origin</td>
-						<td><input type="text" name="origin" value="<%= @currentChemical.origin%>"></td>
+						<label>Name</label><input type="text" name="chemical[name]" value="<%= @currentChemical.name%>"><br>
+						<label>IUPAC</label><input type="text" name="chemical[iupac]" value="<%= @currentChemical.iupac%>"><br>
+						<label>Formula</label><input type="text" name="chemical[formula]" value="<%= @currentChemical.formula%>"><br>
+						<label>Description</label><textarea name="chemical[description]"><%= @currentChemical.description%></textarea><br>
+						<label>LD50 (mg/kg)</label><input type="text" name="chemical[ld50]" value="<%= @currentChemical.ld50%>"><br>
+						<label>Origin</label><input type="text" name="chemical[origin]" value="<%= @currentChemical.origin%>"><br>
+						<label>Click Image to Edit</label><div id='chemical_image'><%= image_tag(@currentChemical.image)%></div><br>
+						<div id="chemical_image_upload"></div>
 					</tr>
 				</tbody>
 			</table>
@@ -212,15 +202,6 @@
 		</div>
 		<% end %>
 
-<!-- this part renders all added chemicals for this particular item -->
-	<div id="added_chemicals">
-		<%if @addedChemicals %>
-		<h3> Added Chemicals </h3>
-		<% @addedChemicals.each do |added| %>
-			<div class="added"><%= added.name %></div>
-		<% end %>
-		<% end %>
-	</div>
 <!-- this asks user if they are finished and gives option to quit -->
 	<% if @addedChemicals %>
 	<div id="finalize">

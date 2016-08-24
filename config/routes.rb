@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   post '/items' => 'items#create'
   post '/items/destroy/:id' =>'items#destroy'
   post '/items/reset' => 'items#reset'
-  patch '/items/:id' => 'items#update'
+  patch '/items' => 'items#update'
   post 'items/confirm' => 'items#confirm'
 
   # admin login
@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   get '/chemicals/new'=>'chemicals#new'
   post '/chemicals/:id' => 'chemicals#getInfo'
   get '/chemicals/:id' => 'chemicals#getInfo'
+  patch '/chemicals' => 'chemicals#update'
 
   # adding categories
   post '/categories/selectCat' => 'categories#selectCat'
