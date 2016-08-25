@@ -21,6 +21,9 @@ class AdminsController < ApplicationController
 	def item
 		session[:item_id] = nil
 	    session[:chemical_id] = nil
+	    session[:category_id] = nil
+		session[:confirmed] = nil
+		session[:categorized] = nil
 	    redirect_to :back
 	end
 	def chemical 
@@ -28,6 +31,6 @@ class AdminsController < ApplicationController
 		session[:category_id] = nil
 		session[:confirmed] = nil
 		session[:categorized] = nil
-		redirect_to :back
+		redirect_to "/chemicals/new"
 	end
 end

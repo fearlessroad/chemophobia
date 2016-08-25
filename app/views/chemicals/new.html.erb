@@ -48,21 +48,17 @@ var edit = "<input type='file' name='chemical[image]' accept='image/*'><br>";
 		});
 
 </script>
-
-
-<div id="itemcontainer">
-	<div id="sidebar">
+<div class="literacy_sidebar">
 		<h3>Welcome, <%= @admin.username %>, you lovely person!</h3>
-		<h5>Here are some useful links:</h5>
-		<a href="#">Add Item</a><br>
-		<a href="#">Edit Item</a><br>
-		<a href="#">Add Chemicals</a><br>
-		<a href="#">Categories</a><br>
-		<a href="#">Literacies</a><br>
-		<a href="#">GMOs</a><br>
-
-	</div>
-		<FIELDSET>
+		<ul>
+			<li><a href="/items/new">Add Item</a></li>
+			<li><a href="#">Edit an item</a></li>
+			<li><a href="#">Literacies</a></li>
+			<li><a href="#">GMOs</a></li>
+			<li><a href="#">Chemicals</a></li>
+		</ul>
+</div>
+<div class="other">
 		<div id="items">
 		<% if flash[:errors] %>
 		<% flash[:errors].each do |e| %>
@@ -135,6 +131,6 @@ var edit = "<input type='file' name='chemical[image]' accept='image/*'><br>";
 		</div>
 	</div>
 <% end %>
-		</FIELDSET>
 	</div>
 </div>
+<div class="fill"></div>

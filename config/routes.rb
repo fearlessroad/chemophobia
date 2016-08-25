@@ -2,11 +2,13 @@ Rails.application.routes.draw do
 
   get 'admins/index'
 
-  root 'items#index'
+  root 'application#index'
+  get 'application/index'=>'application#index'
   get '/admins' => 'admins#index'
 
   # application
-  get '/items'=> 'items#show'
+  get '/items'=> 'items#index'
+  get '/items/index'=> 'items#index'
   get 'items/display/:id'=>'items#display'
 
   # adding items
@@ -14,7 +16,8 @@ Rails.application.routes.draw do
   post '/items/destroy/:id' =>'items#destroy'
   post '/items/reset' => 'items#reset'
   patch '/items' => 'items#update'
-  post 'items/confirm' => 'items#confirm'
+  post '/items/confirm' => 'items#confirm'
+  post '/items/edit'=>'items#edit'
 
   # admin and sessions
   post '/admins' => 'admins#login'
@@ -32,9 +35,9 @@ Rails.application.routes.draw do
   patch '/chemicals' => 'chemicals#update'
 
   # adding categories
+  post '/categories'=>'categories#create'
   post '/categories/selectCat' => 'categories#selectCat'
   post '/categories/confirm' => 'categories#confirm'
-  post '/categories'=>'categories#create'
   get '/categories/new'=>'categories#new'
 
 

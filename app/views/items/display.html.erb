@@ -2,7 +2,7 @@
 <script>
 $(document).ready(function(){
 
-$('a').click(function(e){
+$('div.column2 a').click(function(e){
 	e.preventDefault();
 	$.post(
 		$(this).attr('href'),
@@ -13,13 +13,13 @@ $('a').click(function(e){
 			var tags = "";
 			for (i=0; i<data.categories.length; i++){
 				if (i==data.categories.length -1){
-					tags += "<a href='/categories/subcats/"+data.categories[i].subcat_id+"'>#"+data.categories[i].subcat_name +"</a>, <a href='/categories/cats/"+data.categories[i].cat_id+"'>#"+data.categories[i].cat_name+"</a>";
+					tags += "<a class='category' href='/categories/subcats/"+data.categories[i].subcat_id+"'>#"+data.categories[i].subcat_name +"</a>, <a class='category' href='/categories/cats/"+data.categories[i].cat_id+"'>#"+data.categories[i].cat_name+"</a>";
 				}
 				else {
-					tags += "<a href='/categories/subcats/"+data.categories[i].subcat_id + "'>#"+data.categories[i].subcat_name+"</a>, ";
+					tags += "<a class='category' href='/categories/subcats/"+data.categories[i].subcat_id + "'>#"+data.categories[i].subcat_name+"</a>, ";
 				}
 			}
-			var info = "<h3>Chemical Literacy</h3><ul><li><h4>Name: </h4> "+data.chemical.name+"</li><li><img src='/assets/"+data.chemical.image+"'></li><li><h4>IUPAC:</h4> "+data.chemical.iupac+"</li><li><h4>Formula: </h4> "+data.chemical.formula+"</li><li><h4>LD50:</h4> "+data.chemical.ld50+" mg/kg</li><li><h4>Description: </h4> "+data.chemical.description+"</li><li><h4>Categories:</h4> "+tags+"</li></ul>"; 
+			var info = "<div id='literacy'><h2>Chemical Literacy</h2><ul><li><img src='/assets/"+data.chemical.image+"'></li><li><span class='underline'><h4>Name: </h4></span> "+data.chemical.name+"</li><li><span class='underline'><h4>Origin: </h4></span> "+data.chemical.origin+"</li><li><span class='underline'><h4>IUPAC:</h4></span> "+data.chemical.iupac+"</li><li><span class='underline'><h4>Formula: </h4></span> "+data.chemical.formula+"</li><li><span class='underline'><h4>LD50:</h4></span> "+data.chemical.ld50+" mg/kg</li><li><span class='underline'><h4>Description: </h4></span> "+data.chemical.description+"</li><li><span class='underline'><h4>Categories:</h4></span> "+tags+"</li></ul></div>"; 
 			$("#literacy_sidebar").html(info);
 			$("#display_box").css("width", "70%");
 			// $("#literacy_sidebar").append(image);
@@ -30,30 +30,30 @@ $('a').click(function(e){
 
 });
 </script>
-
-<div id="itemcontainer">
-	<div id="literacy_sidebar">
-	</div>
-	<div id="display_box">
+<div class="display">
+	<div id="literacy_sidebar"></div>
 	<!-- two column format -->
+	<div id="display_box">
+		<div class='back'>
+			<%= link_to image_tag('back.png'), "/items/index"%>
+		</div>
 		<div class="column1">
-			<div class="item_pic"><%= image_tag(@item.image)%></div>
-			<h3><%= @item.name %></h3>
+			<h1><%= @item.name %></h1>
+			<%= image_tag(@item.image)%>
 			<p><%= @item.description%></p>
 		</div>
 	<!-- Second column -->
 		<div class="column2">
-			<div class="item_content">
-				<h4>Chemicals</h4>
+				<h2>Chemicals</h2>
 					<p><% @chemicals.each do |c| %>
 					<% if c == @chemicals.last %>
 						<a href="/chemicals/<%= c.chemical_id%>"><%= c.name %></a> (<%= c.percentage %>%)
-					<% else %>
+					<% else %> 
 						<a href="/chemicals/<%=c.chemical_id%>"><%= c.name %></a> (<%= c.percentage %>%),
-					<% end %>
+					<% end %> 
 					<% end %></p>
-				<h4>Genetic Modifications</h4>
-			</div>
+				<h2>Genetic Modifications</h2>
 		</div>
 	</div>
 </div>
+<div class="fill"></div>

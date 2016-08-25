@@ -1,15 +1,10 @@
-		<div id="wrapper">
-			<div id="sidebar">
-				<h2>Welcome to Chem<span class="italic">Query</span>!</h2>
-				<p>Striving to deliver only facts backed by science</p>
-				<h4>Chemical Spotlight</h4>
-				<%= image_tag(@chemical.image)%>
-				<h5>Name: <%=@chemical.name%></h5>
-				<p><%= @chemical.description%></p>
-				<h4>GMO Spotlight</h4>
-				<p>None at the moment :(</p>
-			</div>	
-			<div id="main">
-				<a href="/items"><button id="goToApp"><h2>What's in YOUR food?</h2></button></a>
-			</div>
-		</div>
+<div class="fill"></div>
+<div class="other">
+		<h3>All Items</h3>
+		<% if @items %>
+		<% @items.each do |i|%>
+		<a href="/items/display/<%= i.id%>"><%= image_tag(i.image)%></a>
+		<% end %>
+		<% end %>
+</div>
+<div class="fill"></div>

@@ -5,16 +5,16 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
 </head>
 <body>
 <div id="container">
 	<div id="header">
 		<ul>
-			<li><a href="/">Home</a></li>
-			<li><a href="#">About</a></li>
-			<li><a href="#">Chemophobia</a></li>
-			<li><a href="#">Literacy</a></li>
-			<li><a href="#">App</a></li>
+			<li><a href="/application/index">Home</a></li>
+			<li><a href="/application/index#news">News</a></li>
+			<li><a href="/#about">Mission</a></li>
+			<li><a href="/items">App</a></li>
 			<li class="search">
 				<input type="search" name="search">
 			</li>

@@ -1,8 +1,8 @@
 class ItemsController < ApplicationController
-	def index
-		offset = rand(Chemical.count)
-		@chemical = Chemical.offset(offset).first
-	end
+	# def index
+	# 	offset = rand(Chemical.count)
+	# 	@chemical = Chemical.offset(offset).first
+	# end
 	def new
 	    if session[:item_id]
 	  	 @currentItem = Item.find(session[:item_id])
@@ -15,6 +15,7 @@ class ItemsController < ApplicationController
 	# ItemChemRelationships.joins(:chemical).select("chemicals.name, chemicals.id, chemicals.chemical_category_id").joins(:chemical_category).select("chemical_category.name as chemcat_name, chemical_category.id as chemcat_id")
 
 	    # end
+	    @items = Item.all
 	    @admin = Admin.find(session[:admin_id])
 	   #  @chemicals = Chemical.all
 	  	# @categories = ChemCat.all
@@ -41,6 +42,11 @@ class ItemsController < ApplicationController
 		  	end
 		end
 	end
+	def edit
+		@item = Item.find(params[:id])
+		session[:item_id] = @item.id
+		redirect_to "/items/new"
+	end
 	def confirm
 		flash[:success]= ["Your item has been added! You can now add chemicals to the item!"]
 		redirect_to "/chemicals/new";
@@ -58,7 +64,7 @@ class ItemsController < ApplicationController
 	 # 	session[:confirmed]=nil
 	 # 	redirect_to :back
 	 # end
-	 def show
+	 def index
 	 	@items = Item.all
 	 end
 	 def display
@@ -67,7 +73,8 @@ class ItemsController < ApplicationController
 	 	# @chemicals_by_item = ItemChemShip.joins(:chemical).select("item_chem_ships.*, chemicals.name")
 	 	# @chemicals_by_category = @chemicals_by_item.joins(:chem_cat_ship).select("chemicals.name, chemicals.id, chem_cat_ships.chem_cat_id")
 
-	 	@chemicals = ItemChemShip.joins("LEFT JOIN chem_cat_ships ON item_chem_ships.chemical_id = chem_cat_ships.chemical_id").joins("LEFT JOIN chemicals on item_chem_ships.chemical_id = chemicals.id").select("item_chem_ships.*, chem_cat_ships.*, chemicals.name, chemicals.id as chemical_id").where(item: Item.find(params[:id])).order(:percentage)
+	 	# @chemicals = ItemChemShip.joins("LEFT JOIN chem_cat_ships ON item_chem_ships.chemical_id = chem_cat_ships.chemical_id").joins("LEFT JOIN chemicals on item_chem_ships.chemical_id = chemicals.id").select("item_chem_ships.*, chem_cat_ships.*, chemicals.name, chemicals.id as chemical_id").where(item: Item.find(params[:id])).order(:percentage)
+	 	@chemicals = ItemChemShip.where(item: @item).joins(:chemical).select("item_chem_ships.*, chemicals.name").order(percentage: :desc)
 	 end
 	private
 	 	def item_params 

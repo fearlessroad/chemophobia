@@ -7,17 +7,9 @@
 
 
 	$(document).ready(function(){
-		$("#addNewChemical").click(function(){
+		$("#categorize").click(function(){
 			console.log("we are hovering");
 			$("#adding_a_new_chemical").html(addNewChemical);
-		});
-		$('img').click(function(){
-			console.log("clicked the image");
-			$('#chemical_image_upload').append(edit);
-		})
-		$('#confirm_chemical').click(function(){
-			console.log("confirmed!");
-			$("#categorize").html(addCategories);
 		});
 		$('#select_a_category').submit(function(e){
 			e.preventDefault();
@@ -41,33 +33,23 @@
 				'json');
 			return false;
 			});
-		$("#percent").keyup(function(e){
-			if(e.keyCode !=8){
-				if($(this).val().length==2){
-					$(this).val($(this).val()+".");
-				}
-			}
-		});
 
 		});
 
 </script>
 
-
-<div id="itemcontainer">
-<div id="sidebar">
-	<h3>Welcome, <%= @admin.username %>, you lovely person!</h3>
-	<h5>Here are some useful links:</h5>
-	<a href="#">Add Item</a><br>
-	<a href="#">Edit Item</a><br>
-	<a href="#">Add Chemicals</a><br>
-	<a href="#">Categories</a><br>
-	<a href="#">Literacies</a><br>
-	<a href="#">GMOs</a><br>
-
+<div class="literacy_sidebar">
+		<h3>Welcome, <%= @admin.username %>, you lovely person!</h3>
+		<ul>
+			<li><a href="/items/new">Add Item</a></li>
+			<li><a href="#">Edit an item</a></li>
+			<li><a href="#">Literacies</a></li>
+			<li><a href="#">GMOs</a></li>
+			<li><a href="#">Chemicals</a></li>
+		</ul>
 </div>
-	<div id="items">
-		<FIELDSET>
+
+	<div class="other">
 		<% if flash[:errors] %>
 		<% flash[:errors].each do |e| %>
 		<%= e %>
@@ -100,6 +82,7 @@
 	<!-- this renders current chemical -->
 <!-- renders option to categorize the chemical -->
 	<div id="categorize_chemical">
+	<% if !session[:categorized] %>
 		<h3>Add a Category & Subcategory to <%= @currentChemical.name %></h3>
 		<table>
 			<thead>
@@ -134,7 +117,11 @@
 			</tbody>
 		</table>
 	</div>
+	<% else %>
+	<form action='/admins/chemical' method='post'>
+		<input name='authenticity_token' value='<%= form_authenticity_token %>' type='hidden'><button>Add Another Chemical</button></form>
+	<% end %>
 
-		</FIELDSET>
 	</div>
 </div>
+<div class="fill"></div>

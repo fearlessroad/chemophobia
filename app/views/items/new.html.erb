@@ -18,21 +18,17 @@ var edit = "<input type='file' name='item[image]'><br>";
 	});
 
 </script>
-
-
-<div id="itemcontainer">
-	<div id="sidebar">
+<div class="literacy_sidebar">
 		<h3>Welcome, <%= @admin.username %>, you lovely person!</h3>
-		<h5>Here are some useful links:</h5>
-		<a href="/items/new">Add Item</a><br>
-		<a href="#">Edit an item</a><br>
-		<a href="#">Literacies</a><br>
-		<a href="#">GMOs</a><br>
-		<a href="#">Chemicals</a><br>
-
-	</div>
-	<div id="items">
-		<FIELDSET>
+		<ul>
+			<li><a href="/items/new">Add Item</a></li>
+			<li><a href="#">Edit an item</a></li>
+			<li><a href="#">Literacies</a></li>
+			<li><a href="#">GMOs</a></li>
+			<li><a href="#">Chemicals</a></li>
+		</ul>
+</div>
+<div class="other">
 <% if @currentItem %>
 			<h3>Edit Item!</h3>
 			<form id="edit_added_item" action="/items" method="post">
@@ -67,7 +63,16 @@ var edit = "<input type='file' name='item[image]'><br>";
 				<label>Upload Image</label><input type="file" name="item[image]" accept="image/*"><br>
 				<button class="add">Add Item!</button><br>
 			</form>
+			<h3>Or Edit an Item!</h3>
+			<form action="/items/edit" method="post">
+				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+				<select name="id">
+					<% @items.each do |i|%>
+					<option value="<%=i.id%>"><%= i.name%></option>
+					<% end %>
+				</select>
+				<button>Go</button>
+			</form>
 <% end %>
 </div>
-		</FIELDSET>
 </div>

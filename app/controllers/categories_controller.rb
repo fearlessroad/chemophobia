@@ -13,7 +13,8 @@ class CategoriesController < ApplicationController
 	end
 	def create
 		# params[:subcat] is an array containing all the subcategories
-
+		itemchemship = ItemChemShip.find_by(chemical: Chemical.find(session[:chemical_id]), item: Item.find(session[:item_id]))
+		itemchemship.update(percentage: params[:percentage])
 		subcats = params[:subcat]
 		if subcats
 			subcats.each do |cat|  
