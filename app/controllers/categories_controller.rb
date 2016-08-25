@@ -35,5 +35,6 @@ class CategoriesController < ApplicationController
 		@currentItem = Item.find(session[:item_id])
 		@currentChemical = Chemical.find(session[:chemical_id])
 		@categories = ChemCat.all
+		@addedChemicals = ItemChemShip.joins(:chemical).select("chemicals.name, chemicals.id").where(item: Item.find(session[:item_id]))
 	end
 end

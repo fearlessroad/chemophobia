@@ -98,89 +98,42 @@
 		<% end %>
 	</div>
 	<!-- this renders current chemical -->
-<% if session[:chemical_id] && !session[:confirmed]%>
-
-		<div id="editing_chemicals">
-			<h3>Confirm <%= @currentChemical.name %> Details</h3>
-				<form id ='edit_chemical' action='/chemicals' method='post'>
-				<input name='authenticity_token' value='<%= form_authenticity_token %>' type='hidden'>
-				<input type="hidden" name="_method" value="patch">
-						<label>Name</label><input type="text" name="chemical[name]" value="<%= @currentChemical.name%>"><br>
-						<label>IUPAC</label><input type="text" name="chemical[iupac]" value="<%= @currentChemical.iupac%>"><br>
-						<label>Formula</label><input type="text" name="chemical[formula]" value="<%= @currentChemical.formula%>"><br>
-						<label>Description</label><textarea name="chemical[description]"><%= @currentChemical.description%></textarea><br>
-						<label>LD50 (mg/kg)</label><input type="text" name="chemical[ld50]" value="<%= @currentChemical.ld50%>"><br>
-						<label>Origin</label><input type="text" name="chemical[origin]" value="<%= @currentChemical.origin%>"><br>
-						<label>Click Image to Edit</label><div id='chemical_image'><%= image_tag(@currentChemical.image)%></div><br>
-						<div id="chemical_image_upload"></div>
-					</tr>
-				</tbody>
-			</table>
-			<button id="edit_chemical">Edit</button></form>
-			<form id="confirm_chemical" action="/categories/confirm" method="post"><input name='authenticity_token' value='<%= form_authenticity_token %>' type='hidden'><button id="confirm_chemical">Confirm</button></form>
-		</div>
-
-		<%end%>
-
-<!-- this part renders categories assuming user has confirmed item -->
-		<%if session[:confirmed] %>
-<!-- renders the current chemical information -->
-		<div id="editing_chemicals">
-			<h3>Current Chemical: <%= @currentChemical.name%></h3>
-			<button>Edit</button>
-			<form id ="add_another_chemical" action="/admins/chemical" method="post">
-				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-			<!-- if we want to add another chemical, this button will reset all sessions EXCEPT item id -->
-			<button>Submit & Add Another</button>
-			</form>
-		</div>
-		<% else %>
-			</table>
-			<button>Edit</button><form>
-			<!-- if we want to add another chemical, this button will reset all sessions EXCEPT item id -->
-			<form id ="add_another_chemical" action="/admins/chemical" method="post">
-				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-			<button>Submit & Add Another</button>
-			</form>
-		</div>
 <!-- renders option to categorize the chemical -->
-		<div id="categorize_chemical">
-			<h3>Add a Category & Subcategory</h3>
-			<table>
-				<thead>
-					<th>Category</th>
-					<th>Subcategory</th>
-					<th>Percentage</th>
-					<th>Action</th>
-				</thead>
-				<tbody>
-					<tr>
-						<td>
-							<form id ='select_a_category' action='/categories/selectCat' method='post'>
-								<input name='authenticity_token' value='<%= form_authenticity_token %>' type='hidden'>
-								<select name='category' id='cat'><% @categories.each do |category| %>
-									<option value='<%=category.id%>:<%=session[:chemical_id]%>'><%=category.name%></option>
-								<% end %></select><br>
-								<button>Add Category</button>
-							</form>
-						</td>
-						<td>
-							<form action='/categories' method='post'>
+	<div id="categorize_chemical">
+		<h3>Add a Category & Subcategory to <%= @currentChemical.name %></h3>
+		<table>
+			<thead>
+				<th>Category</th>
+				<th>Subcategory</th>
+				<th>Percentage</th>
+				<th>Action</th>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						<form id ='select_a_category' action='/categories/selectCat' method='post'>
 							<input name='authenticity_token' value='<%= form_authenticity_token %>' type='hidden'>
-							<div class="appendedsubcat"></div>
-						</td>
-						<td>
-							<input type="text" id="percent" name="percentage">%
-						</td>
-						<td>
-							<button>Categorize</button></form>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-		<% end %>
-		<% end %>
+							<select name='category' id='cat'><% @categories.each do |category| %>
+								<option value='<%=category.id%>:<%=session[:chemical_id]%>'><%=category.name%></option>
+							<% end %></select><br>
+							<button>Add Category</button>
+						</form>
+					</td>
+					<td>
+						<form action='/categories' method='post'>
+						<input name='authenticity_token' value='<%= form_authenticity_token %>' type='hidden'>
+						<div class="appendedsubcat"></div>
+					</td>
+					<td>
+						<input type="text" id="percent" name="percentage">%
+					</td>
+					<td>
+						<button>Categorize</button></form>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 
 		</FIELDSET>
 	</div>
