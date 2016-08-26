@@ -48,6 +48,7 @@ class ItemsController < ApplicationController
 	 	@item = Item.find(params[:id])
 	 	@chemicals = ItemChemShip.where(item: @item).joins(:chemical).select("item_chem_ships.*, chemicals.name").order(percentage: :desc)
 	 	@gmos = Gmo.where(item: Item.find(params[:id]))
+	 	@water = Chemical.find_by(name:"water")
 	 end
 	private
 	 	def item_params 

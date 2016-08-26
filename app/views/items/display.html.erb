@@ -21,7 +21,7 @@ $('div.column2 a').click(function(e){
 			}
 			var info = "<div id='literacy'><h2>Chemical Literacy</h2><ul><li><img src='/assets/"+data.chemical.image+"'></li><li><span class='underline'><h4>Name: </h4></span> "+data.chemical.name+"</li><li><span class='underline'><h4>Origin: </h4></span> "+data.chemical.origin+"</li><li><span class='underline'><h4>IUPAC:</h4></span> "+data.chemical.iupac+"</li><li><span class='underline'><h4>Formula: </h4></span> "+data.chemical.formula+"</li><li><span class='underline'><h4>LD50:</h4></span> "+data.chemical.ld50+" mg/kg</li><li><span class='underline'><h4>Description: </h4></span> "+data.chemical.description+"</li><li><span class='underline'><h4>Categories:</h4></span> "+tags+"</li></ul></div>"; 
 			$("#literacy_sidebar").html(info);
-			$("#display_box").css("width", "70%");
+			// $("#display_box").css("width", "70%");
 			// $("#literacy_sidebar").append(image);
 		}, "json" );
 	return false;
@@ -31,8 +31,10 @@ $('div.column2 a').click(function(e){
 });
 </script>
 <div class="display">
-	<div id="literacy_sidebar"></div>
 	<!-- two column format -->
+		<div id="literacy_sidebar">
+			<div id='literacy'><h2>Chemical Literacy</h2><ul><li><img src='/assets/water.png'></li><li><span class='underline'><h4>Name: </h4></span><%= @water.name %></li><li><span class='underline'><h4>Origin: </h4></span> <%= @water.origin %></li><li><span class='underline'><h4>IUPAC:</h4></span><%= @water.iupac%></li><li><span class='underline'><h4>Formula: </h4></span><%= @water.formula %></li><li><span class='underline'><h4>LD50:</h4></span> <%= @water.ld50 %> mg/kg</li><li><span class='underline'><h4>Description: </h4></span><%= @water.description%></li><li><span class='underline'><h4>Categories:</h4></span><a href="">#inorganic</a>, <a href="#">#water</a></li></ul></div>
+		</div>
 	<div id="display_box">
 		<div class='back'>
 			<%= link_to image_tag('back.png'), "/items/index"%>

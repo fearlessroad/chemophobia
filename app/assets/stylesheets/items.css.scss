@@ -37,8 +37,13 @@
 	text-align:justify;
 }
 .column2 a{
-	text-decoration: none;
 	color:black;
+	text-decoration:none;
+	line-height:20px;
+}
+.column2 a:hover{
+	font-style:italic;
+	color:#ee7600;
 }
 .column2 h2{
 	margin: 20px 0;
@@ -66,6 +71,7 @@
 #display_box{
 	display:inline-block;
 	vertical-align:top;
+	width:70%;
 }
 .back{
 	height:auto;
