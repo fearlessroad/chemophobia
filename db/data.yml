@@ -1,5 +1,253 @@
 
 ---
+items:
+  columns:
+  - id
+  - name
+  - image
+  - description
+  - created_at
+  - updated_at
+  records: 
+  - - 16
+    - Apple
+    - apple.jpg
+    - red thing
+    - '2016-08-24 19:39:17.831720'
+    - '2016-08-24 19:39:17.831720'
+  - - 17
+    - Kiwi
+    - kiwi.jpg
+    - green thing with hairy skin
+    - '2016-08-24 20:51:58.419953'
+    - '2016-08-24 20:51:58.419953'
+  - - 18
+    - Banana
+    - banana.jpg
+    - largest herbaceous flowering plant (it's an herb!)
+    - '2016-08-24 22:06:35.442429'
+    - '2016-08-25 19:33:07.991989'
+  - - 19
+    - orange
+    - orange.jpg
+    - orange thing
+    - '2016-08-24 23:13:09.288788'
+    - '2016-08-24 23:13:09.288788'
+  - - 20
+    - blueberry
+    - blueberries.jpg
+    - indigo-colored tiny fruits of joy
+    - '2016-08-25 19:35:35.738872'
+    - '2016-08-25 19:35:35.738872'
+  - - 21
+    - soybean
+    - soybean.jpg
+    - a significant and cheap source of protein for animal feed and packaged meals
+    - '2016-08-26 01:19:10.250746'
+    - '2016-08-26 01:19:10.250746'
+  - - 22
+    - egg
+    - egg.png
+    - a thing laid by female animals with a protective eggshell. These things usually
+      contain the egg white and the yolk.
+    - '2016-08-26 01:49:38.912541'
+    - '2016-08-26 01:49:38.912541'
+  - - 23
+    - coffee bean
+    - coffee.jpg
+    - the seed of a coffee plant used for brewing coffee
+    - '2016-08-26 01:54:56.345774'
+    - '2016-08-26 01:54:56.345774'
+  - - 24
+    - strawberry
+    - strawberry.jpeg
+    - cultivated worldwide, the fruit is not a real fruit in the botanical sense.
+      It is appreciated for its sweetness, bright color and aroma.
+    - '2016-08-26 01:58:00.034614'
+    - '2016-08-26 01:58:00.034614'
+  - - 25
+    - lemon
+    - lemon.jpeg
+    - its juice is used in cooking and cleaning.
+    - '2016-08-26 01:59:08.135088'
+    - '2016-08-26 01:59:08.135088'
+  - - 26
+    - pineapple
+    - pineapple.jpg
+    - tropical plant with edible fruit. It's called a pineapple because European explorers
+      in the Americas in the 1600's thought they resembled a pinecone
+    - '2016-08-26 02:02:34.230524'
+    - '2016-08-26 02:02:34.230524'
+  - - 27
+    - peach
+    - peach.jpg
+    - the same species as a nectarine! Peaches have a characteristic fuzziness, though,
+      due to tiny hairs called trichomes.
+    - '2016-08-26 02:04:02.208290'
+    - '2016-08-26 02:04:02.208290'
+
+---
+item_chem_ships:
+  columns:
+  - id
+  - percentage
+  - item_id
+  - chemical_id
+  - created_at
+  - updated_at
+  records: 
+  - - 23
+    - 
+    - 19
+    - 1
+    - '2016-08-24 23:23:56.910695'
+    - '2016-08-24 23:23:56.910695'
+  - - 24
+    - 5.76
+    - 18
+    - 4
+    - '2016-08-25 01:20:51.574543'
+    - '2016-08-25 01:36:43.553133'
+  - - 25
+    - 4.8
+    - 18
+    - 5
+    - '2016-08-25 01:28:07.977996'
+    - '2016-08-25 01:35:21.809167'
+  - - 26
+    - 75.0
+    - 18
+    - 1
+    - '2016-08-25 01:55:46.425932'
+    - '2016-08-25 01:55:59.918140'
+  - - 27
+    - 0.24
+    - 18
+    - 6
+    - '2016-08-25 02:28:51.096155'
+    - '2016-08-25 02:34:17.841014'
+  - - 28
+    - 0.12
+    - 18
+    - 7
+    - '2016-08-25 02:39:13.109135'
+    - '2016-08-25 02:39:36.649154'
+  - - 29
+    - 0.6
+    - 18
+    - 8
+    - '2016-08-25 02:43:31.661636'
+    - '2016-08-25 02:43:55.563989'
+  - - 30
+    - 0.5
+    - 18
+    - 9
+    - '2016-08-25 18:56:20.072134'
+    - '2016-08-25 18:57:03.716941'
+  - - 31
+    - 0.17
+    - 18
+    - 10
+    - '2016-08-25 19:04:33.820795'
+    - '2016-08-25 19:05:00.586784'
+  - - 32
+    - 0.14
+    - 18
+    - 11
+    - '2016-08-25 19:08:37.216903'
+    - '2016-08-25 19:09:06.976319'
+  - - 33
+    - 0.1
+    - 18
+    - 12
+    - '2016-08-25 19:13:54.009774'
+    - '2016-08-25 19:14:08.904439'
+  - - 34
+    - 0.3
+    - 18
+    - 13
+    - '2016-08-25 19:17:49.240378'
+    - '2016-08-25 19:18:11.528987'
+  - - 35
+    - 0.14
+    - 18
+    - 14
+    - '2016-08-25 19:24:24.332345'
+    - '2016-08-25 19:25:06.499237'
+  - - 36
+    - 0.1
+    - 18
+    - 15
+    - '2016-08-25 19:30:39.665377'
+    - '2016-08-25 19:30:59.777211'
+  - - 37
+    - 84.0
+    - 20
+    - 1
+    - '2016-08-25 19:35:46.890276'
+    - '2016-08-26 02:11:33.519101'
+  - - 38
+    - 4.8
+    - 20
+    - 5
+    - '2016-08-26 00:20:42.573945'
+    - '2016-08-26 00:21:57.684689'
+  - - 39
+    - 4.0
+    - 20
+    - 4
+    - '2016-08-26 00:22:14.364466'
+    - '2016-08-26 00:22:33.279726'
+  - - 40
+    - 2.0
+    - 20
+    - 6
+    - '2016-08-26 00:22:42.697814'
+    - '2016-08-26 00:23:15.526938'
+  - - 41
+    - 2.4
+    - 20
+    - 9
+    - '2016-08-26 00:23:31.310077'
+    - '2016-08-26 00:23:43.356249'
+  - - 42
+    - 0.23
+    - 20
+    - 10
+    - '2016-08-26 00:23:56.995998'
+    - '2016-08-26 00:24:07.409979'
+  - - 43
+    - 0.18
+    - 20
+    - 11
+    - '2016-08-26 00:24:15.136290'
+    - '2016-08-26 00:24:25.811179'
+  - - 44
+    - 0.17
+    - 20
+    - 16
+    - '2016-08-26 00:30:58.882662'
+    - '2016-08-26 00:31:29.012697'
+  - - 45
+    - 0.3
+    - 20
+    - 14
+    - '2016-08-26 00:31:57.335599'
+    - '2016-08-26 00:32:10.787449'
+  - - 46
+    - 0.19
+    - 20
+    - 17
+    - '2016-08-26 00:35:41.096746'
+    - '2016-08-26 00:36:04.955464'
+  - - 47
+    - 0.18
+    - 20
+    - 18
+    - '2016-08-26 00:38:57.064472'
+    - '2016-08-26 00:39:13.050132'
+
+---
 chemicals:
   columns:
   - id
@@ -23,6 +271,317 @@ chemicals:
     - '2016-08-21 18:14:51.018927'
     - '2016-08-24 04:11:48.387814'
     - H2O
+  - - 4
+    - glucose
+    - "(2R,3S,4R,5R)-2,3,4,5,6-Pentahydroxyhexanal"
+    - glucose.png
+    - a low-reactivity sugar, most stable in its cyclic form, commonly known as "blood
+      sugar", essential to living organisms
+    - '30000'
+    - made during photosynthesis from water and carbon dioxide
+    - '2016-08-25 01:20:51.563901'
+    - '2016-08-25 01:20:51.563901'
+    - C6H12O6
+  - - 5
+    - fructose
+    - 1,3,4,5,6-Pentahydroxy-2-hexanone
+    - fructose.png
+    - fruit sugar, derived from sugar cane, usually added to drinks for taste enhancement
+    - '29700'
+    - generated by plants
+    - '2016-08-25 01:28:07.961089'
+    - '2016-08-25 01:28:07.961089'
+    - C6H12O6
+  - - 6
+    - sucrose
+    - "(2R,3R,4S,5S,6R)-2-[(2S,3S,4S,5R)-3,4-dihydroxy-2,5-bis(hydroxymethyl)oxolan-2-yl]oxy-6-(hydroxymethyl)oxane-3,4,5-triol"
+    - sucrose.png
+    - 'extracted from cane or beet sugar, commonly referred to as "table sugar" or
+      just "sugar". '
+    - '29700'
+    - plants and plant parts
+    - '2016-08-25 02:28:51.072607'
+    - '2016-08-25 02:28:51.072607'
+    - C12H22O11
+  - - 7
+    - maltose
+    - 2-(hydroxymethyl)-6-[4,5,6-trihydroxy-2-(hydroxymethyl)oxan-3-yl]oxyox ane-3,4,5-triol
+    - maltose.png
+    - formed from starch breakdown, disaccharide of 2 glucose monomers, referred to
+      as "malt" because of its generation in germinating seeds
+    - '34800'
+    - discovered in 1872 by Cornelius O'Sullivan and named after "malt"
+    - '2016-08-25 02:39:13.093935'
+    - '2016-08-25 02:39:13.093935'
+    - C12H22O11
+  - - 8
+    - starch
+    - n/a
+    - starch.png
+    - polymer of glucose, produced by green plants for energy storage
+    - '6600'
+    - '"starch" comes from Germanic roots, the word meaning "stiff, strong, strengthen"'
+    - '2016-08-25 02:43:31.637528'
+    - '2016-08-25 02:43:31.637528'
+    - "(C6H10O5)n"
+  - - 9
+    - cellulose
+    - n/a
+    - cellulose.png
+    - a carbohydrate made up of long polysaccharide chain of glucose monomers, which
+      in turn makes up plant cell walls
+    - '2000'
+    - plants
+    - '2016-08-25 18:56:19.979783'
+    - '2016-08-25 18:56:19.979783'
+    - "(C6H10O5)n"
+  - - 10
+    - glutamic acid
+    - 2-Aminopentanedioic acid
+    - glutamicacid.png
+    - 'polar, negatively charged amino acid, a key compound in cellular metabolism '
+    - '16600'
+    - discovered and identified in 1866
+    - '2016-08-25 19:04:33.792985'
+    - '2016-08-25 19:04:33.792985'
+    - C5H9NO4
+  - - 11
+    - aspartic acid
+    - 2-Aminobutanedioic acid
+    - aspartic.png
+    - an amino acid that is semi-essential to humans
+    - '5000'
+    - discovered in 1827 and derived from asparagine, a compound found in asparagus
+    - '2016-08-25 19:08:37.189740'
+    - '2016-08-25 19:08:37.189740'
+    - C4H7NO4
+  - - 12
+    - histidine
+    - 2-Amino-3-(1H-imidazol-4-yl)propanoic acid
+    - histidine.png
+    - essential amino acid, a precursor to histamine (an inflammatory agent in the
+      immune response)
+    - '15000'
+    - first isolated in 1896
+    - '2016-08-25 19:13:54.001531'
+    - '2016-08-25 19:13:54.001531'
+    - C6H9N3O2
+  - - 13
+    - palmitic acid
+    - hexadecanoic acid
+    - palmitic.png
+    - the most common fatty acid found in plants, mammals and microorganisms
+    - '57'
+    - major component of palm trees and named after palm oil
+    - '2016-08-25 19:17:49.228467'
+    - '2016-08-25 19:17:49.228467'
+    - C16H32O2
+  - - 14
+    - linoleic acid
+    - "(9Z,12Z)-9,12-Octadecadienoic acid"
+    - linoleic.png
+    - omega-6 fatty acid, one of the essential fatty acids for humans
+    - '6300'
+    - found in large doses in poppyseed, grape, sunflower, and corn oil
+    - '2016-08-25 19:24:24.313864'
+    - '2016-08-25 19:24:24.313864'
+    - C18H32O2
+  - - 15
+    - riboflavin
+    - 7,8-Dimethyl-10-[(2S,3S,4R)-2,3,4,5-tetrahydroxypentyl]benzo[g]pteridine-2,4-dione
+    - riboflavin.png
+    - AKA vitamin B
+    - '10000'
+    - ribo (ribose = sugar) flavin (flavus = yellow, in Latin)
+    - '2016-08-25 19:30:39.646312'
+    - '2016-08-25 19:30:39.646312'
+    - C17H20N4O6
+  - - 16
+    - leucine
+    - 2-Amino-4-methylpentanoic acid
+    - glutamicacid.png
+    - nonpolar essential amino acid
+    - '000'
+    - synthesized from plants from pyruvate
+    - '2016-08-26 00:30:58.874390'
+    - '2016-08-26 00:30:58.874390'
+    - C6H13O6
+  - - 17
+    - linolenic acid
+    - "(9Z, 12Z, 15Z)-9, 12, 15-Octadecatrienoic acid"
+    - linoleic.png
+    - esssential omega-3 fatty acid in the human diet, present in many plant oils
+    - '6300'
+    - found in many plant seeds (chia, flaxseed), nuts (walnuts) and vegetable oils
+    - '2016-08-26 00:35:41.086475'
+    - '2016-08-26 00:35:41.086475'
+    - C18H30O2
+  - - 18
+    - oleic acid
+    - "(9E)-Octadec-9-enoic acid"
+    - linoleic.png
+    - an odorless, colorless oil
+    - '25000'
+    - plant based, oleic acid triglycerides (the naturally occurring form) make up
+      the majority of olive oil
+    - '2016-08-26 00:38:57.058425'
+    - '2016-08-26 00:38:57.058425'
+    - C18H34O2
+
+---
+chem_cat_ships:
+  columns:
+  - id
+  - chem_cat_id
+  - chem_subcat_id
+  - chemical_id
+  - created_at
+  - updated_at
+  records: 
+  - - 15
+    - 5
+    - 26
+    - 1
+    - '2016-08-24 19:47:48.132578'
+    - '2016-08-25 02:21:29.301747'
+  - - 23
+    - 2
+    - 5
+    - 4
+    - '2016-08-25 01:22:55.573605'
+    - '2016-08-25 01:54:34.329233'
+  - - 24
+    - 2
+    - 25
+    - 4
+    - '2016-08-25 01:22:55.589857'
+    - '2016-08-25 01:22:55.589857'
+  - - 25
+    - 2
+    - 5
+    - 5
+    - '2016-08-25 01:35:21.829840'
+    - '2016-08-25 01:35:21.829840'
+  - - 26
+    - 2
+    - 25
+    - 5
+    - '2016-08-25 01:35:21.847251'
+    - '2016-08-25 01:35:21.847251'
+  - - 27
+    - 2
+    - 6
+    - 6
+    - '2016-08-25 02:29:17.430588'
+    - '2016-08-25 02:29:17.430588'
+  - - 28
+    - 2
+    - 25
+    - 6
+    - '2016-08-25 02:29:17.461416'
+    - '2016-08-25 02:29:17.461416'
+  - - 29
+    - 2
+    - 2
+    - 7
+    - '2016-08-25 02:39:36.664083'
+    - '2016-08-25 02:39:36.664083'
+  - - 30
+    - 2
+    - 6
+    - 7
+    - '2016-08-25 02:39:36.673861'
+    - '2016-08-25 02:39:36.673861'
+  - - 31
+    - 2
+    - 25
+    - 7
+    - '2016-08-25 02:39:36.682286'
+    - '2016-08-25 02:39:36.682286'
+  - - 32
+    - 2
+    - 2
+    - 8
+    - '2016-08-25 02:43:55.574356'
+    - '2016-08-25 02:43:55.574356'
+  - - 33
+    - 2
+    - 7
+    - 8
+    - '2016-08-25 02:43:55.587817'
+    - '2016-08-25 02:43:55.587817'
+  - - 34
+    - 2
+    - 4
+    - 9
+    - '2016-08-25 18:57:03.744590'
+    - '2016-08-25 18:57:03.744590'
+  - - 35
+    - 2
+    - 7
+    - 9
+    - '2016-08-25 18:57:03.755861'
+    - '2016-08-25 18:57:03.755861'
+  - - 36
+    - 1
+    - 1
+    - 10
+    - '2016-08-25 19:05:00.595120'
+    - '2016-08-25 19:05:00.595120'
+  - - 37
+    - 1
+    - 1
+    - 11
+    - '2016-08-25 19:09:06.989085'
+    - '2016-08-25 19:09:06.989085'
+  - - 38
+    - 1
+    - 1
+    - 12
+    - '2016-08-25 19:14:08.913455'
+    - '2016-08-25 19:14:08.913455'
+  - - 39
+    - 6
+    - 23
+    - 13
+    - '2016-08-25 19:18:11.537445'
+    - '2016-08-25 19:18:11.537445'
+  - - 40
+    - 6
+    - 23
+    - 14
+    - '2016-08-25 19:25:06.507848'
+    - '2016-08-25 19:25:06.507848'
+  - - 41
+    - 4
+    - 14
+    - 15
+    - '2016-08-25 19:30:59.786002'
+    - '2016-08-25 19:30:59.786002'
+  - - 42
+    - 4
+    - 15
+    - 15
+    - '2016-08-25 19:30:59.795885'
+    - '2016-08-25 19:30:59.795885'
+  - - 43
+    - 1
+    - 1
+    - 16
+    - '2016-08-26 00:31:29.022564'
+    - '2016-08-26 00:31:29.022564'
+  - - 44
+    - 6
+    - 23
+    - 17
+    - '2016-08-26 00:36:04.962889'
+    - '2016-08-26 00:36:04.962889'
+  - - 45
+    - 6
+    - 23
+    - 18
+    - '2016-08-26 00:39:13.057767'
+    - '2016-08-26 00:39:13.057767'
 
 ---
 chem_cats:
@@ -181,6 +740,40 @@ chem_subcats:
     - 6
     - '2016-08-21 18:03:07.089965'
     - '2016-08-21 18:03:07.089965'
+  - - 25
+    - sugar
+    - 2
+    - '2016-08-25 01:22:22.209617'
+    - '2016-08-25 01:22:22.209617'
+  - - 26
+    - water
+    - 5
+    - '2016-08-25 01:58:18.870937'
+    - '2016-08-25 01:58:18.870937'
+
+---
+gmos:
+  columns:
+  - id
+  - name
+  - description
+  - developer
+  - item_id
+  - trait
+  - dna_source
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - MON-¯4¯32-6
+    - the very first GM introduced into American crops and registered with the FDA
+      in 1994, this GM confers tolerance to the herbicide glyphosate
+    - 
+    - 
+    - Herbicide Tolerance
+    - Agrobacterium sp. strain CP4
+    - '2016-08-26 01:19:18.462923'
+    - '2016-08-26 01:19:24.923814'
 
 ---
 admins:

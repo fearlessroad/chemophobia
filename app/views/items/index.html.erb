@@ -1,10 +1,12 @@
 <div class="fill"></div>
 <div class="other">
+	<div class="items">
 		<h3>All Items</h3>
 		<% if @items %>
 		<% @items.each do |i|%>
 		<a href="/items/display/<%= i.id%>"><%= image_tag(i.image)%></a>
 		<% end %>
 		<% end %>
+	</div>
 </div>
 <div class="fill"></div>

@@ -4,10 +4,7 @@
 	<a href="/items"><button id="goToApp"><h2>Enter</h2></button></a>
 </div>
 <div id="news" class="other">
-	<h1>News</h1>
-	<div class="newsbox">
-		<h3>In the news today</h3>
-	</div>
+<h1>Tech Spotlight</h1>
 	<div class="newsbox">
 		<h3>Chemical Spotlight</h3>
 		<div class="newsscroll">
@@ -15,12 +12,16 @@
 			<p><span class="underline">Name</span> <%=@chemical.name%></p><br>
 			<p><span class="underline">Formula</span> <%=@chemical.formula%></p><br>
 			<p><span class="underline">Origins</span> <%=@chemical.origin%></p><br>
-			<p><span class="underline">Description</span> <%=@chemical.description%></p><br>
+			<p><span class="underline">Description</span> <%=@chemical.description%></p><br> 
 		</div>
 
 	</div>
 	<div class="newsbox">
 		<h3>Genetic Modification Spotlight</h3>
+		<p><span class="underline">Name</span> <%= @g.name%></p><br>
+		<p><span class="underline">Description</span> <%=@g.description%></p><br>
+		<p><span class="underline">DNA source</span> <%=@g.dna_source%></p><br>
+		<p><span class="underline">Trait</span> <%=@g.trait%></p><br>
 	</div>
 
 </div>

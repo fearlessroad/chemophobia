@@ -34,6 +34,7 @@
 /*	background-color:grey;*/
 /*	border:1px solid red;*/
 	vertical-align:top;
+	text-align:justify;
 }
 .column2 a{
 	text-decoration: none;
@@ -56,7 +57,7 @@
 	margin:0 10px 10px -10px;
 }
 #literacy_sidebar img{
-	height:100px;
+	height:20%;
 }
 #literacy{
 	margin:20px;
@@ -110,4 +111,8 @@
 }
 .literacy_sidebar ul, li{
 	display:inline;
+}
+.items{
+	width:80%;
+	margin:0 auto;
 }

@@ -24,8 +24,6 @@ class CategoriesController < ApplicationController
 				end
 			end
 		end
-		# ItemChemShip.where(chemical: Chemical.find(session[:chemical_id]), item: Item.find(session[:item_id])).update_all(percentage: params[:percentage])
-		# session[:confirmed] = nil
 		session[:categorized] = true
 		session[:flash] = ["Your categories were added successfully"]
 		env["HTTP_REFERER"] += '#added_chemicals'

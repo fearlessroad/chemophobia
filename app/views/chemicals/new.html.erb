@@ -3,12 +3,9 @@
 <script>
 
 
-var addNewChemical = "<label>IUPAC name</label><input type='text' name='iupac'><br><label>Formula</label><input type='text' name='formula'><br><label>Description</label><input type='text' name='description'><br><label>LD50</label><input type='number' name='ld50'><br><label>Origin</label><input type='text' name='origin'><br><label>Image</label><input type='file' name='image'><br>";
+var addNewChemical = "<label>IUPAC name</label><input type='text' name='iupac'><br><label>Formula</label><input type='text' name='formula'><br><label>Description</label><input type='text' name='description'><br><label>LD50</label><input type='text' name='ld50'><br><label>Origin</label><input type='text' name='origin'><br><label>Image</label><input type='file' name='image'><br>";
 
 var edit = "<input type='file' name='chemical[image]' accept='image/*'><br>";
-
-// var categories = "<label>Category</label><select><% @categories.each do |category| %><option><%= category.name %></option><% end %></select><br>";
-
 
 	$(document).ready(function(){
 		$("#addNewChemical").click(function(){
