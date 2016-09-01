@@ -1,0 +1,17 @@
+<h3>Add Chemical to Item</h3>
+	<form id ='add_a_chemical' action='/chemicals' method='post'>
+		<input name='authenticity_token' value='<%= form_authenticity_token %>' type='hidden'>
+		<label>Add an existing chemical:</label>
+			<select id = "addExistingChemical" name="chemicalSelected">
+				<option value=""></option>
+				<% @chemicals.each do |chemical| %>
+				<option value="<%=chemical.id%>"><%= chemical.name %></option>
+				<% end %>
+			</select><br>
+			<div id="add_existing_chemical"></div>
+		<label>Or add a new chemical:</label>
+		<input id="addNewChemical" type='text' name='chemicalWritten'><br>
+		<div id="adding_a_new_chemical"></div>
+		<button id="addchemical">Add Chemical</button>
+	</form>
+

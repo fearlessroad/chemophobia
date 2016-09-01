@@ -1,0 +1,18 @@
+<h3>Confirm <%= @currentChemical.name %> Details</h3>
+				<form id ='edit_chemical' action='/chemicals' method='post'>
+				<input name='authenticity_token' value='<%= form_authenticity_token %>' type='hidden'>
+				<input type="hidden" name="_method" value="patch">
+						<label>Name</label><input type="text" name="chemical[name]" value="<%= @currentChemical.name%>"><br>
+						<label>IUPAC</label><input type="text" name="chemical[iupac]" value="<%= @currentChemical.iupac%>"><br>
+						<label>Formula</label><input type="text" name="chemical[formula]" value="<%= @currentChemical.formula%>"><br>
+						<label>Description</label><textarea name="chemical[description]"><%= @currentChemical.description%></textarea><br>
+						<label>LD50 (mg/kg)</label><input type="text" name="chemical[ld50]" value="<%= @currentChemical.ld50%>"><br>
+						<label>Origin</label><input type="text" name="chemical[origin]" value="<%= @currentChemical.origin%>"><br>
+						<label>Click Image to Edit</label><div id='chemical_image'><%= image_tag(@currentChemical.image)%></div><br>
+						<div id="chemical_image_upload"></div>
+					</tr>
+				</tbody>
+			</table>
+			<button id="edit_chemical">Edit</button></form>
+<!-- 			<form id="confirm_chemical" action="/categories/confirm" method="post"><input name='authenticity_token' value='<%= form_authenticity_token %>' type='hidden'></form> -->
+			

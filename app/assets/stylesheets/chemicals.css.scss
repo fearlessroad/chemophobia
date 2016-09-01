@@ -1,3 +1,37 @@
 // Place all the styles related to the Chemicals controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#workspace{
+	border:1px solid grey;
+	padding:10px;
+
+}
+.added {
+	border:1px solid #b3f0ff;
+	border-radius:3px;
+	margin:0 5px;
+	padding:5px 10px;
+	width:auto;
+	display:inline-block;
+	background: #ccf5ff; 
+
+}
+.added:hover{
+	box-shadow: 3px 3px 3px #cccccc;
+}
+#workspace img{
+	height:15px;
+	width:auto;
+	margin:0;
+	padding:0;
+}
+#editing_categories{
+	display:none;
+}
+#editing_chemicals{
+	display:none
+}
+#add_new_chemical{
+
+}

@@ -1,0 +1,39 @@
+
+<h3>Add a Category & Subcategory</h3>
+<table class="table table-bordered">
+	<thead>
+		<th>Category</th>
+		<th>Subcategory</th>
+		<th>Percentage</th>
+		<th>Action</th>
+	</thead>
+	<tbody>
+		<tr>
+			<td>
+				<form id ='select_a_category' action='/categories/selectCat' method='post'>
+					<input name='authenticity_token' value='<%= form_authenticity_token %>' type='hidden'>
+					<select name='category' id='cat'><% @categories.each do |category| %>
+						<option value='<%=category.id%>:<%=session[:chemical_id]%>'><%=category.name%></option>
+					<% end %></select><br>
+					<button>Add Category</button>
+				</form>
+			</td>
+			<td>
+				<form action='/categories' method='post'>
+				<input name='authenticity_token' value='<%= form_authenticity_token %>' type='hidden'>
+				<div class="appendedsubcat"></div>
+			</td>
+			<td>
+				<input type="text" id="percent" name="percentage">%
+			</td>
+			<td>
+				<button id="categorize">Categorize</button></form>
+			</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+
+</div>
+</div>
+<div class="fill"></div>

@@ -4,7 +4,8 @@ Rails.application.routes.draw do
 
   root 'application#index'
   get 'application/index'=>'application#index'
-  get '/admins' => 'admins#index'
+  get '/admins' => 'admins#home'
+  get '/admins/home' => 'admins#home'
 
   # application
   get '/items'=> 'items#index'
@@ -18,6 +19,7 @@ Rails.application.routes.draw do
   patch '/items' => 'items#update'
   post '/items/confirm' => 'items#confirm'
   post '/items/edit'=>'items#edit'
+  get '/items/search'=>'items#search'
 
   # admin and sessions
   post '/admins' => 'admins#login'

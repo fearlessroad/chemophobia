@@ -19,24 +19,31 @@ class ChemicalsController < ApplicationController
 			if chemical 
 				session[:chemical_id] = chemical.id
 				ItemChemShip.create(item: Item.find(session[:item_id]), chemical: Chemical.find(chemical.id))
-				redirect_to :back
+				# redirect_to :back
+					json_message = {:status => 'success', :message => chemical.name+' was successfully added!'}
+					render json: json_message
 			else
 				chemical = Chemical.new(name: params[:chemicalWritten], iupac: params[:iupac], formula: params[:formula], image:params[:image], description: params[:description], ld50: params[:ld50], origin: params[:origin])
 
 				if chemical.save
 					ItemChemShip.create(item: Item.find(session[:item_id]), chemical: Chemical.find(chemical.id))
 					session[:chemical_id] = chemical.id 
-					redirect_to :back
+					# redirect_to :back
+					json_message = {:status => 'success', :message => chemical.name+' was successfully added!'}
+					render json: json_message
 				else 
-					flash[:errors] = chemical.errors.full_messages
-					redirect_to :back
+					# redirect_to :back
+					json_message = {:status => 'failure', :message => chemical.errors.full_messages}
+					render json: json_message
 				end
 			end
 		else 
 			chemical = Chemical.find(params[:chemicalSelected])
 			ItemChemShip.create(item: Item.find(session[:item_id]), chemical: chemical)
 			session[:chemical_id] = chemical.id
-			redirect_to :back
+			# redirect_to :back
+			json_message = {:status => 'success', :message => chemical.name+' was successfully added!'}
+			render json: json_message
 		end
 	end
 	def update

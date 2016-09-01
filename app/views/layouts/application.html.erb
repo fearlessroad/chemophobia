@@ -6,6 +6,8 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 <body>
 <div id="container">
@@ -15,10 +17,12 @@
 			<li><a href="/application/index#news">News</a></li>
 			<li><a href="/#about">Mission</a></li>
 			<li><a href="/items">App</a></li>
+			<form action="/items/search" method="get"><input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+			<li class="search"><input type="submit" value="Search"></li>
 			<li class="search">
-				<input type="search" name="search">
+				<input type="search" name="item" placeholder="Item name...">
 			</li>
-			<li class="search">Search</li>
+			</form>
 		</ul>
 	</div>
 

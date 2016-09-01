@@ -46,11 +46,27 @@ br{
 #header li{
 	margin:0 5px;
 }
+#header form{
+	display:inline;
+}
 #header .search{
 float:right;
+margin-bottom:10px;
 }
-input[type="search"]{
-	border-radius:7px
+#header input[type="search"]{
+	border-radius:7px;
+	width:150px;
+	color:black;
+}
+#header input[type="submit"]{
+/*	padding:5px;*/
+	background:black;
+	height:25px;
+	width:auto;
+}
+#header input[type="submit"]:hover{
+	background:white;
+	color:black;
 }
 #header a{
 	text-decoration: none;
@@ -79,7 +95,6 @@ input[type="search"]{
 }
 #application{
 	height:420px;
-	border:1px solid black;
 	text-align:center;
 }
 #application h1{
@@ -98,8 +113,8 @@ input[type="search"]{
 }
 #about{
 	height:450px;
-	border:1px solid black;
 	color:white;
+	padding:30px;
 }
 #goToApp{
 /*	height:auto;*/
@@ -108,7 +123,6 @@ input[type="search"]{
 	color:white;
 	margin: 50px auto;
 	border-radius:20px;
-	border:1px solid black;
 	padding:15px 30px;
 	display:block;
 }
@@ -120,9 +134,9 @@ input[type="search"]{
 }
 .other{
 	height:auto;
-	border:1px solid black;
 	background-color:white;
 	text-align:center;
+	padding:30px;
 }
 .other img{
 	height:100px;
@@ -141,6 +155,13 @@ input[type="search"]{
 	display:inline-block;
 	margin-bottom:20px;
 }
+.other a{
+	text-decoration:none;
+	color:orange;
+}
+.other a:hover{
+	color:black;
+}
 .other button{
 	display:inline-block;
 }
@@ -152,8 +173,8 @@ input[type="search"]{
 	text-align:left;
 	margin:0 auto;
 }
-.other h3, h1, h2{
-	margin:20px 0;
+.other h3, h1, h2, h4{
+	margin:25px 0;
 }
 .other h3{
 	font-weight:bold;

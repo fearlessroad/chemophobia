@@ -1,14 +1,21 @@
 class AdminsController < ApplicationController
 	def index
 		if session[:admin_id]
-			redirect_to '/items/new'
+			redirect_to '/admins/home'
 		end
+  	end
+  	def home
+  		@admin = Admin.find(session[:admin_id])
+	    @items = Item.all
+	    @chemicals = Chemical.all
+	    @gmos = Gmo.all
+	    @literacies = Literacy.all
   	end
   	def login
 	  	@user = Admin.find_by(email: params[:email])
 	  	if @user && @user.authenticate(params[:password])
 	  		session[:admin_id] = @user.id
-	  		redirect_to '/items/new'
+	  		redirect_to '/admins/home'
 	  	else 
 	  		flash[:errors] = ["Invalid email/ password combination"]
 	  		redirect_to :back

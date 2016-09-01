@@ -15,11 +15,37 @@ var edit = "<input type='file' name='chemical[image]' accept='image/*'><br>";
 		$('img').click(function(){
 			console.log("clicked the image");
 			$('#chemical_image_upload').append(edit);
-		})
+		});
+		$("#add_a_chemical").submit(function(){
+			$.post(
+				$(this).attr('action'),
+				$(this).serialize(),
+				function(data){
+					if (data.status == "success"){
+						$(".notice").html(data.message);
+						$("#add_new_chemical").slideToggle(1000, function(){
+							$("#editing_chemicals").slideToggle(1000);
+						})
+					}
+					console.log("data received from ajax call", data);
+					console.log(data.status);
+				}, "json");
+			return false;
+		});
 		$('#confirm_chemical').click(function(){
 			console.log("confirmed!");
-			$("#categorize").html(addCategories);
-		});
+			$('#editing_chemicals').slideUp(1000, function(){
+
+			$('#editing_categories').slideToggle(1000);
+			});
+			});
+			// $("#categorize").html(addCategories);
+		// });
+		$("#categorize").click(function(){
+			$("#editing_categories").slideToggle(1000, function(){
+
+			})
+		})
 		$('#select_a_category').submit(function(e){
 			e.preventDefault();
 			$.post(
@@ -45,18 +71,20 @@ var edit = "<input type='file' name='chemical[image]' accept='image/*'><br>";
 		});
 
 </script>
-<div class="literacy_sidebar">
-		<h3>Welcome, <%= @admin.username %>, you lovely person!</h3>
-		<ul>
-			<li><a href="/items/new">Add Item</a></li>
-			<li><a href="#">Edit an item</a></li>
-			<li><a href="#">Literacies</a></li>
-			<li><a href="#">GMOs</a></li>
-			<li><a href="#">Chemicals</a></li>
-		</ul>
-</div>
+<%= render partial: '/shared/adminheader.html.erb'%>
 <div class="other">
 		<div id="items">
+	<div id="workspace">
+		<h4>Current Item: <%=@currentItem.name%> (<a href="/items/new">edit</a>)</h4>	
+		<div id="added_chemicals">
+		<%if @addedChemicals %>
+		<% @addedChemicals.each do |added| %>
+			<div class="added"><img src="/assets/delete.png"><%= added.name %></div>
+		<% end %>
+		<% end %>
+		</div>
+	</div>
+	<div class="notice">
 		<% if flash[:errors] %>
 		<% flash[:errors].each do |e| %>
 		<%= e %>
@@ -68,66 +96,18 @@ var edit = "<input type='file' name='chemical[image]' accept='image/*'><br>";
 		<%= s %>
 		<% end %>
 		<% end %>
-			<div>
-				<h3>Current Item: <%=@currentItem.name%><a href="/items/new"></h3><button>Edit <%=@currentItem.name%></button></a></h3>
-			</div>
-
-<!-- edit chemical -->
-
-<!-- this part renders all added chemicals for this particular item -->
-	<div id="added_chemicals">
-		<%if @addedChemicals %>
-		<h3> Added Chemicals </h3>
-		<% @addedChemicals.each do |added| %>
-			<div class="added"><%= added.name %></div>
-		<% end %>
-		<% end %>
+		<div>
 	</div>
 
-	<!-- this renders current chemical -->
-<%if session[:chemical_id] %>
-		<div id="editing_chemicals">
-			<h3>Confirm <%= @currentChemical.name %> Details</h3>
-				<form id ='edit_chemical' action='/chemicals' method='post'>
-				<input name='authenticity_token' value='<%= form_authenticity_token %>' type='hidden'>
-				<input type="hidden" name="_method" value="patch">
-						<label>Name</label><input type="text" name="chemical[name]" value="<%= @currentChemical.name%>"><br>
-						<label>IUPAC</label><input type="text" name="chemical[iupac]" value="<%= @currentChemical.iupac%>"><br>
-						<label>Formula</label><input type="text" name="chemical[formula]" value="<%= @currentChemical.formula%>"><br>
-						<label>Description</label><textarea name="chemical[description]"><%= @currentChemical.description%></textarea><br>
-						<label>LD50 (mg/kg)</label><input type="text" name="chemical[ld50]" value="<%= @currentChemical.ld50%>"><br>
-						<label>Origin</label><input type="text" name="chemical[origin]" value="<%= @currentChemical.origin%>"><br>
-						<label>Click Image to Edit</label><div id='chemical_image'><%= image_tag(@currentChemical.image)%></div><br>
-						<div id="chemical_image_upload"></div>
-					</tr>
-				</tbody>
-			</table>
-			<button id="edit_chemical">Edit</button></form>
-			<form id="confirm_chemical" action="/categories/confirm" method="post"><input name='authenticity_token' value='<%= form_authenticity_token %>' type='hidden'><button id="confirm_chemical">Confirm</button></form>
+	<div id="add_new_chemical">
+	<%= render partial: '/shared/addchemical.html.erb'%>
 	</div>
- <%else%>
-<!-- renders the current chemical information -->
 	<div id="editing_chemicals">
-		<div id="chemicals">
-			<h3>Add Chemical to Item</h3>
-			<form id ='add_a_chemical' action='/chemicals' method='post'>
-				<input name='authenticity_token' value='<%= form_authenticity_token %>' type='hidden'>
-				<label>Add an existing chemical:</label>
-					<select id = "addExistingChemical" name="chemicalSelected">
-						<option value=""></option>
-						<% @chemicals.each do |chemical| %>
-						<option value="<%=chemical.id%>"><%= chemical.name %></option>
-						<% end %>
-					</select><br>
-					<div id="add_existing_chemical"></div>
-				<label>Or add a new chemical:</label>
-				<input id="addNewChemical" type='text' name='chemicalWritten'><br>
-				<div id="adding_a_new_chemical"></div>
-				<button>Add Chemical</button>
-			</form>
-		</div>
+			<%= render partial: '/shared/editchemical.html.erb'%>
+			<button id="confirm_chemical">Confirm</button>
 	</div>
-<% end %>
+	<div id="editing_categories">
+		<%= render partial: '/shared/editcategory.html.erb'%>
 	</div>
+			
 </div>
-<div class="fill"></div>

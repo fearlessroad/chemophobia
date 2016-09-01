@@ -1,0 +1,64 @@
+<script>
+
+var edit = "<input type='file' name='item[image]'><br>";
+
+	$(document).ready(function(){
+	
+		$('#confirm_chemical').click(function(){
+			console.log("confirmed!");
+			$("#categorize").html(addCategories);
+		});
+		$('img').click(function(){
+			console.log("clicked image!");
+			$('#edit_image').append(edit);
+		});
+	});
+
+</script>
+<%= render partial: '/shared/adminheader.html.erb'%>
+<div class="other">
+<h2>What would you like to do today?</h2>
+<table class="table-sm table table-hover table-responsive">
+<caption>Recently added items</caption>
+	<thead>
+		<th>ID</th>
+		<th>Name</th>
+		<th>Description</th>
+		<th>Date Added</th>
+		<th>Action</th>
+	</thead>
+	<tbody>
+		<% @items.order('updated_at DESC').first(3).each do |item| %>
+		<tr>
+			<td><%=item.id%></td>
+			<td><%=item.name%></td>
+			<td><%=item.description%></td>
+			<td><%=item.updated_at.strftime('%m/%d/%y %I:%M %P')%></td>
+			<td><a href="">Edit</a></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+<table class="table-sm table table-hover table-responsive">
+<caption>Recently added chemicals</caption>
+	<thead>
+		<th>ID</th>
+		<th>Name</th>
+		<th>Description</th>
+		<th>Date Added</th>
+		<th>Action</th>
+	</thead>
+	<tbody>
+	<% @chemicals.order('updated_at DESC').first(3).each do |chemical| %>
+	<tr>
+		<td><%=chemical.id%></td>
+		<td><%=chemical.name%></td>
+		<td><%=chemical.description%></td>
+		<td><%=chemical.updated_at.strftime('%m/%d/%y %I:%M %P')%></td>
+		<td><a href="">Edit</a></td>
+	</tr>
+	<% end %>
+	</tbody>
+</table>
+
+</div>
