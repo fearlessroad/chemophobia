@@ -32,9 +32,6 @@ class ItemsController < ApplicationController
 		session[:item_id] = @item.id
 		redirect_to "/items/new"
 	end
-	def confirm
-		redirect_to "/chemicals/new";
-	end
 	def destroy 
 	    Item.find(session[:item_id]).destroy
 	    session[:item_id] = nil

@@ -56,18 +56,18 @@ class ChemicalsController < ApplicationController
 		redirect_to :back
 
 	end
-	def getInfo
-		@chemical = Chemical.find(params[:id])
-		@categories = ChemCatShip.joins(:chem_cat).joins(:chem_subcat).select("chem_cats.name as cat_name, chem_cats.id as cat_id, chem_subcats.name as subcat_name, chem_subcats.id as subcat_id").where(chemical: @chemical)
-		msg = {:chemical => @chemical, :categories => @categories}
-		render json: msg
-	end
 	def resetSession
 		session[:chemical_id] = nil
 		session[:category_id] = nil
 		session[:confirmed] = nil
 		session[:categorized] = nil
 		redirect_to :back
+	end
+	def getInfo
+		@chemical = Chemical.find(params[:id])
+		@categories = ChemCatShip.joins(:chem_cat).joins(:chem_subcat).select("chem_cats.name as cat_name, chem_cats.id as cat_id, chem_subcats.name as subcat_name, chem_subcats.id as subcat_id").where(chemical: @chemical)
+		msg = {:chemical => @chemical, :categories => @categories}
+		render json: msg
 	end
 private
 	def chemical_params

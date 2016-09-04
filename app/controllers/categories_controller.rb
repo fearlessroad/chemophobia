@@ -1,15 +1,10 @@
 class CategoriesController < ApplicationController
-	def selectCat
-		@category, @chemical = params[:category].split(":")
-		session[:category_id] = @category
-		@subcategories = ChemSubcat.where(chem_cat: @category)
-		json_message = {:chemical => @chemical, :category => @category, :subcategories => @subcategories}
-		render json: json_message
-	end
-	def confirm
-		session[:confirmed] = true
-		env["HTTP_REFERER"] += '#categorize_chemical'
-		redirect_to "/categories/new"
+	def new
+		@admin = Admin.find(session[:admin_id])
+		@currentItem = Item.find(session[:item_id])
+		@currentChemical = Chemical.find(session[:chemical_id])
+		@categories = ChemCat.all
+		@addedChemicals = ItemChemShip.joins(:chemical).select("chemicals.name, chemicals.id").where(item: Item.find(session[:item_id]))
 	end
 	def create
 		# params[:subcat] is an array containing all the subcategories
@@ -29,11 +24,16 @@ class CategoriesController < ApplicationController
 		env["HTTP_REFERER"] += '#added_chemicals'
 		redirect_to :back
 	end
-	def new
-		@admin = Admin.find(session[:admin_id])
-		@currentItem = Item.find(session[:item_id])
-		@currentChemical = Chemical.find(session[:chemical_id])
-		@categories = ChemCat.all
-		@addedChemicals = ItemChemShip.joins(:chemical).select("chemicals.name, chemicals.id").where(item: Item.find(session[:item_id]))
-	end
+	# def selectCat
+	# 	@category, @chemical = params[:category].split(":")
+	# 	session[:category_id] = @category
+	# 	@subcategories = ChemSubcat.where(chem_cat: @category)
+	# 	json_message = {:chemical => @chemical, :category => @category, :subcategories => @subcategories}
+	# 	render json: json_message
+	# end
+	# def confirm
+	# 	session[:confirmed] = true
+	# 	env["HTTP_REFERER"] += '#categorize_chemical'
+	# 	redirect_to "/categories/new"
+	# end
 end
