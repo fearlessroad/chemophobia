@@ -4,7 +4,7 @@
 		<h3>All Items</h3>
 		<% if @items %>
 		<% @items.each do |i|%>
-		<a href="/items/display/<%= i.id%>"><%= image_tag(i.image)%></a>
+		<a href="/items/show/<%= i.id%>"><%= image_tag(i.image)%></a>
 		<% end %>
 		<% end %>
 	</div>

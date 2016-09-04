@@ -1,13 +1,32 @@
+<script>
+
+var edit = "<input type='file' name='item[image]'><br>";
+
+	$(document).ready(function(){
+
+		$('img').click(function(){
+			console.log("clicked image!");
+			$('#edit_image').append(edit);
+		});
+	});
+
+</script>
+
+
+
+<%= render partial: '/shared/adminheader.html.erb'%>
+<div class="other">
 <h3>Edit Item!</h3>
-<form action="/items" method="post">
+<form action="/items/<%=@item.id%>" method="post">
 	<input name="_method" type="hidden" value="patch">
 	<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-	<label>Name</label><input type="text" name="item[name]" value="<%=@currentItem.name%>"><br>
-	<label>Description</label><textarea name="item[description]"><%=@currentItem.description%></textarea><br>
-	<label>Click Image to Edit</label><%= image_tag(@currentItem.image)%><br>
+	<label>Name</label><input type="text" name="item[name]" value="<%=@item.name%>"><br>
+	<label>Description</label><textarea name="item[description]"><%=@item.description%></textarea><br>
+	<label>Click Image to Edit</label><%= image_tag(@item.image)%><br>
 	<div id="edit_image"></div>
 	<button>Edit Item</button>
 </form>
+</div>
 <!-- 	<form action="/items/confirm" method="post">
 		<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 		<button>Confirm Item</button>

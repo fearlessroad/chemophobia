@@ -34,7 +34,7 @@ var edit = "<input type='file' name='item[image]'><br>";
 			<td><%=item.name%></td>
 			<td><%=item.description%></td>
 			<td><%=item.updated_at.strftime('%m/%d/%y %I:%M %P')%></td>
-			<td><a href="">Edit</a></td>
+			<td><a href="/items/<%=item.id%>/edit">Edit</a></td>
 		</tr>
 		<% end %>
 	</tbody>

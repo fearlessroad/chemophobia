@@ -29,8 +29,6 @@ class ItemsController < ApplicationController
 	end
 	def edit
 		@item = Item.find(params[:id])
-		session[:item_id] = @item.id
-		redirect_to "/items/new"
 	end
 	def destroy 
 	    Item.find(session[:item_id]).destroy

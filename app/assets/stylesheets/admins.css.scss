@@ -17,3 +17,41 @@ fieldset button{
 	margin-right:25px;
 	background-color:white;
 }
+.admin_header{
+	background-color:#1aff8c;
+	padding:5px;
+}
+
+.admin_header{
+	height:auto;
+	padding:20px;
+	background-color:#1aff8c;
+	vertical-align:top;
+}
+.admin_header h3{
+	margin:20px;
+	display:inline;
+}
+.admin_header h4{
+/*	margin:15px;*/
+}
+.admin_header a{
+	padding:10px;
+	text-decoration:none;
+	color:black;
+}
+.admin_header a:hover{
+	padding:10px;
+	text-decoration:none;
+	color:black;
+	font-style:italic;
+}
+.admin_header ul{
+	list-style:none;
+	list-style-type:none;
+	float:right;
+/*	margin:10px;*/
+}
+.admin_header ul, li{
+	display:inline;
+}

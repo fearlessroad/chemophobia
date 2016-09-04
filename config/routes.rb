@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   root 'application#index'
-  
+
   get 'admins/index'
   get 'application/index'=>'application#index'
   get '/admins' => 'admins#home'
@@ -10,15 +10,16 @@ Rails.application.routes.draw do
   # application
   get '/items'=> 'items#index'
   get '/items/index'=> 'items#index'
-  get 'items/show/:id'=>'items#display'
 
   # adding items
   post '/items' => 'items#create'
-  delete '/items/:id' =>'items#destroy'
   patch '/items/:id' => 'items#update'
-  # post '/items/confirm' => 'items#confirm'
-  post '/items/:id/edit'=>'items#edit'
+  get '/items/show/:id' => 'items#show'
+  get '/items/:id/edit'=>'items#edit'
+  patch '/items/:id' => 'items#update'
+  delete '/items/:id' =>'items#destroy'
   get '/items/search'=>'items#search'
+  # post '/items/confirm' => 'items#confirm'
 
   # admin and sessions
   post '/admins' => 'admins#login'

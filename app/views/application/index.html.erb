@@ -5,6 +5,9 @@
 	<p>Your trusted source for nature's ingredients</p>
 	<a href="/items"><button id="goToApp"><h2>Enter</h2></button></a>
 </div>
+<% if session[:admin_id %>
+<%= render partial: '/shared/adminheader.html' %>
+<% end %>
 <div id="news" class="other">
 <h1>Tech Spotlight</h1>
 	<div class="newsbox">

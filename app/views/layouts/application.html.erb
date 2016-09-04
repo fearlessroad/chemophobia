@@ -25,6 +25,9 @@
 			</form>
 		</ul>
 	</div>
+	<% if session[:admin_id] %>
+		<%= render partial: '/shared/adminheader.html.erb' %>
+	<% end %>
 
 		<%= yield %>
 </div>
