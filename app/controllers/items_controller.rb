@@ -44,7 +44,7 @@ class ItemsController < ApplicationController
 	 def index
 	 	@items = Item.all
 	 end
-	 def display
+	 def show
 	 	@item = Item.find(params[:id])
 	 	@chemicals = ItemChemShip.where(item: @item).joins(:chemical).select("item_chem_ships.*, chemicals.name").order(percentage: :desc)
 	 	@gmos = Gmo.where(item: Item.find(params[:id]))
@@ -54,7 +54,7 @@ class ItemsController < ApplicationController
 	 	item = Item.find_by(name: params[:item])
 
 	 	if item
-	 		redirect_to "/items/display/#{item.id}"
+	 		redirect_to "/items/show/#{item.id}"
 	 	else
 	 		flash[:errors] = ["Oops! We could not find that item in our database. Here are the items we have:"]
 	 		redirect_to "/items/index"
