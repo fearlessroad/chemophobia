@@ -1,6 +1,43 @@
-<!-- Add or Edit an Item -->
-<!-- items/new -->
-<%= render partial: '/shared/adminheader.html.erb'%>
-<div class="other add-an-item">
-<%= render partial: '/shared/additem.html.erb'%>
-</div>
+<div class="other">
+<h3>Add an Item!</h3>
+	<form id ="add_an_item" action="/items" method="post">
+		<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+		<label>Name</label><div id="item_name" class="appended"><input type="text" name="item[name]"></div><br>
+		<label>Description</label>
+		<div id="item_description" class="appended"><textarea name="item[description]"></textarea></div><br>
+		<label>Upload Image</label><input type="file" name="item[image]" accept="image/*"><br>
+		<button class="add">Add Item!</button><br>
+	</form>
+	<h3>Or Edit an Item!</h3>
+<!-- 	<form action="/items/edit" method="post">
+		<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+		<select name="id">
+			<% @items.each do |i|%>
+			<option value="<%=i.id%>"><%= i.name%></option>
+			<% end %>
+		</select>
+		<button>Go</button>
+	</form> -->
+
+	<div class="row">
+		<div id="items-table" class="">
+			<table>
+				<thead>
+					<th>Name</th>
+					<th>Action</th>
+				</thead>
+				<tbody>
+						<% @items.each do |i| %>
+					<tr>
+							<td><%=i.name%></td>
+							<td>
+								<a href="/items/<%=i.id%>/edit">Edit</a> |  
+								<a data-method="delete" data-confirm="Are you sure you wish to destroy <%=i.name%>?" href="/items/<%=i.id%>">Delete</a> 
+							</td>
+					</tr>
+						<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	</div>

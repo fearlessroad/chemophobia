@@ -4,28 +4,58 @@ var edit = "<input type='file' name='item[image]'><br>";
 
 	$(document).ready(function(){
 
-		$('img').click(function(){
+		$('#edit-image img').click(function(){
 			console.log("clicked image!");
-			$('#edit_image').append(edit);
+			$('#edit-image-div').append(edit);
 		});
+		$('legend img').click(function(){
+			if ($(this).attr("src") === '/assets/down.png'){
+				$(this).attr("src", '/assets/right.png');
+				$(this).parent().parent().siblings().slideToggle(1000)
+			}
+			else {
+				$(this).attr("src", '/assets/down.png');
+				$(this).parent().parent().siblings().slideToggle(1000)
+			}
+		})
 	});
 
 </script>
 
 
 
-<%= render partial: '/shared/adminheader.html.erb'%>
-<div class="other">
-<h3>Edit Item!</h3>
-<form action="/items/<%=@item.id%>" method="post">
-	<input name="_method" type="hidden" value="patch">
-	<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-	<label>Name</label><input type="text" name="item[name]" value="<%=@item.name%>"><br>
-	<label>Description</label><textarea name="item[description]"><%=@item.description%></textarea><br>
-	<label>Click Image to Edit</label><%= image_tag(@item.image)%><br>
-	<div id="edit_image"></div>
-	<button>Edit Item</button>
-</form>
+<div class="other row">
+	<div class="col-md-3">
+	<h3>Ingredients</h3>
+		<%@chemicals.each do |c| %>
+	<div class="added">
+	<%= c.name %>
+	</div>
+		<% end %>
+	</div>
+	<div id="edit-item-steps" class="col-md-9">
+	<fieldset>
+		<legend class="edit-item">
+			<div class="toggle">
+				<img src="/assets/down.png">
+			</div>
+			Step 1: Edit item
+		</legend>
+		<form action="/items/<%=@item.id%>" method="post">
+			<input name="_method" type="hidden" value="patch">
+			<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+			<label>Name</label><input type="text" name="item[name]" value="<%=@item.name%>"><br>
+			<label>Description</label><textarea name="item[description]"><%=@item.description%></textarea><br>
+			<label>Click Image to Edit</label><div id="edit-image"><%= image_tag(@item.image)%></div><br>
+			<div id="edit-image-div"></div>
+			<button>Edit Item</button>
+		</form>
+	</fieldset>
+	<fieldset>
+	<legend class="add-chemical"><div class="toggle"><img src="/assets/right.png"></div>Step 2: Add Chemicals to Item</legend>
+		<%= render partial: '/shared/addchemical.html.erb'%>
+	</fieldset>
+	</div>
 </div>
 <!-- 	<form action="/items/confirm" method="post">
 		<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">

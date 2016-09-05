@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
 	    @literacies = Literacy.all
 	end
 	def update
-		item = Item.find(session[:item_id])
+		item = Item.find(params[:id])
 		item.update(item_params)
 		redirect_to :back
 	end
@@ -29,11 +29,10 @@ class ItemsController < ApplicationController
 	end
 	def edit
 		@item = Item.find(params[:id])
+		@chemicals = ItemChemShip.joins(:chemical).select("chemicals.name, chemicals.id").where(item: Item.find(params[:id]))
 	end
 	def destroy 
-	    Item.find(session[:item_id]).destroy
-	    session[:item_id] = nil
-	    session[:chemical_id] = nil
+	    Item.find(params[:id]).destroy
 	    redirect_to :back
 	 end
 	 def index

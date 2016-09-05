@@ -71,20 +71,8 @@ var edit = "<input type='file' name='chemical[image]' accept='image/*'><br>";
 		});
 
 </script>
-<%= render partial: '/shared/adminheader.html.erb'%>
-<div class="other">
-		<div id="items">
-	<div id="workspace">
-		<h4>Current Item: <%=@currentItem.name%> (<a href="/items/new">edit</a>)</h4>	
-		<div id="added_chemicals">
-		<%if @addedChemicals %>
-		<% @addedChemicals.each do |added| %>
-			<div class="added"><img src="/assets/delete.png"><%= added.name %></div>
-		<% end %>
-		<% end %>
-		</div>
-	</div>
-	<div class="notice">
+<div class="other row">
+	<div class="notice col-md-12">
 		<% if flash[:errors] %>
 		<% flash[:errors].each do |e| %>
 		<%= e %>
@@ -98,16 +86,26 @@ var edit = "<input type='file' name='chemical[image]' accept='image/*'><br>";
 		<% end %>
 		<div>
 	</div>
-
-	<div id="add_new_chemical">
-	<%= render partial: '/shared/addchemical.html.erb'%>
+	<div id="workspace" class="col-md-4">
+		<h4>Current Item: <%=@currentItem.name%> (<a href="/items/">edit</a>)</h4>	
+		<div id="added_chemicals">
+		<%if @addedChemicals %>
+		<% @addedChemicals.each do |added| %>
+			<div class="added"><img src="/assets/delete.png"><%= added.name %></div>
+		<% end %>
+		<% end %>
+		</div>
 	</div>
-	<div id="editing_chemicals">
-			<%= render partial: '/shared/editchemical.html.erb'%>
-			<button id="confirm_chemical">Confirm</button>
+	<div class="col-md-8">
+		<div id="add_new_chemical">
+		<%= render partial: '/shared/addchemical.html.erb'%>
+		</div>
+		<div id="editing_chemicals">
+				<%= render partial: '/shared/editchemical.html.erb'%>
+				<button id="confirm_chemical">Confirm</button>
+		</div>
+		<div id="editing_categories">
+			<%= render partial: '/shared/editcategory.html.erb'%>
+		</div>		
 	</div>
-	<div id="editing_categories">
-		<%= render partial: '/shared/editcategory.html.erb'%>
-	</div>
-			
 </div>

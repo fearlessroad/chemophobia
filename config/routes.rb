@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   patch '/items/:id' => 'items#update'
   get '/items/show/:id' => 'items#show'
   get '/items/:id/edit'=>'items#edit'
+  post '/items/edit' => 'items#edit'
   patch '/items/:id' => 'items#update'
   delete '/items/:id' =>'items#destroy'
   get '/items/search'=>'items#search'

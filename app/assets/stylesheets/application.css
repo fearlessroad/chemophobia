@@ -78,10 +78,11 @@ margin-bottom:10px;
 }
 #footer{
 /*	width: 960px;*/
-	width: 90%;
+	background:black;
 	height:auto;
-	margin: 5px auto;
+/*	margin: 5px auto;*/
 	color: grey;
+	padding:10px;
 	text-align:center;
 }
 #footer a{
@@ -203,20 +204,31 @@ margin-bottom:10px;
 /*	border:1px solid black;*/
 }
 #about{
-	background-color:rgba(255, 255, 255, 0.8);
+	background-color:#4d4d4d;
 	height:auto;
+	color:white;
 	text-align:center;
 }
 #about h1{
-	color:black;
+	color:white;
 }
 #aboutus{
 	margin: 20px 50px;
-	color:black;
+	color:white;
 	text-align:left;
 }
 #aboutus p{
 	margin:10px;
+}
+.toggle img{
+	height:35px;
+	display:inline;
+}
+.toggle{
+	display:inline;
+}
+#edit-item-steps legend{
+	text-align:left;
 }
 
 
