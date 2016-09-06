@@ -1,6 +1,15 @@
 // Place all the styles related to the Admins controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.nav-tabs{
+	background-color:#1aff8c;
+}
+.nav-tabs > li > a:hover{
+	background-color:#00cc7a !important;
+}
+.tab-content{
+	background-color:#1aff8c !important;
+}
 #admin_login{
 	text-align:center;
 	width:960px;
@@ -8,41 +17,85 @@
 #admin_container{
 	margin:20px auto;
 }
-
-.admin_header{
-	background-color:#1aff8c;
-	padding:5px;
+.admin div{
+	background-color:white;
 }
 .admin_header{
 	height:auto;
-	padding:20px;
+	padding:5px 0;
 	background-color:#1aff8c;
 	vertical-align:top;
-}
-.admin_header h3{
-	margin:20px;
-	display:inline;
-}
-.admin_header h4{
-/*	margin:15px;*/
+	text-align:left;
 }
 .admin_header a{
-	padding:10px;
+	padding:0;
+	margin:0;
 	text-decoration:none;
 	color:black;
 }
-.admin_header a:hover{
-	padding:10px;
+.admin_header button:hover{
 	text-decoration:none;
 	color:black;
 	font-style:italic;
 }
-.admin_header ul{
-	list-style:none;
-	list-style-type:none;
-	float:right;
-/*	margin:10px;*/
+.admin_header button{
+		background:#1aff8c;
+		border:none;
+		text-align:center;
+		width:150px;
+		margin:0;
+		padding:5px;
+		display:inline-block;
 }
-.admin_header ul, li{
-	display:inline;
+.admin{
+	height:auto;
+	background-color:white;
+	text-align:left;
+	padding:20px;
+}
+.admin-div{
+	border:1px solid black;
+	margin:5px;
+	border-radius:5px;
+}
+.admin img{
+	height:100px;
+	margin:10px;
+}
+.admin label, input, textarea{
+	display:block;
+	width:150px;
+	margin-bottom:10px;
+	float:left;
+}
+.admin select{
+	float:left;
+}
+.admin form{
+	display:inline-block;
+	margin-bottom:20px;
+}
+.admin a{
+	text-decoration:none;
+	color:orange;
+}
+.admin a:hover{
+	color:black;
+}
+.admin button{
+	display:inline-block;
+}
+.admin button:hover{
+	color:white;
+	background-color:black;
+}
+.admin table{
+	text-align:left;
+	margin:0 auto;
+}
+.admin h3, h1, h2, h4{
+	margin:25px 0;
+}
+.admin h3{
+	font-weight:bold;
 }

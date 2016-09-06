@@ -1,9 +1,3 @@
-<div class="admin_header">
-		<h3>Welcome, <%= Admin.find(session[:admin_id]).username %>, you lovely person!</h3>
-		<ul>
-			<li><a href="/items/new">Items</a></li>
-			<li><a href="/chemicals/new">Chemicals</a></li>
-			<li><a href="#">Literacies</a></li>
-			<li><a href="#">GMOs</a></li>
-		</ul>
+<div class="admin_header col-md-12">
+			<a href="/items/new"><button>Items</button></a><a href="/chemicals/new"><button>Chemicals</button></a><a href="#"><button>Literacies</button></a><a href="#"><button>GMOs</button></a>
 </div>

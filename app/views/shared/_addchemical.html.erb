@@ -4,7 +4,7 @@
 		<label>Add an existing chemical:</label>
 			<select id = "addExistingChemical" name="chemicalSelected">
 				<option value=""></option>
-				<% @chemicals.each do |chemical| %>
+				<% @allChemicals.each do |chemical| %>
 				<option value="<%=chemical.id%>"><%= chemical.name %></option>
 				<% end %>
 			</select><br>

@@ -1,9 +1,6 @@
 // Place all the styles related to the Items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.fill {
-	height:50px;
-}
 .display{
 	height:auto;
 	background-color:white;
@@ -90,4 +87,10 @@
 #items-table{
 	height:400px;
 	overflow:scroll;
+}
+#arrow-back img{
+	height: 45px;
+}
+#arrow-back a{
+	float:left;
 }

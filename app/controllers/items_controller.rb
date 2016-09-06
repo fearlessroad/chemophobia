@@ -19,8 +19,7 @@ class ItemsController < ApplicationController
 		else 
 		  	item = Item.new(item_params)
 		  	if item.save
-		      	session[:item_id] = item.id
-		  		redirect_to '/chemicals/new'
+		  		redirect_to "/items/#{item.id}/edit"
 		  	else 
 		  		flash[:errors] = item.errors.full_messages
 		  		redirect_to :back
@@ -29,7 +28,8 @@ class ItemsController < ApplicationController
 	end
 	def edit
 		@item = Item.find(params[:id])
-		@chemicals = ItemChemShip.joins(:chemical).select("chemicals.name, chemicals.id").where(item: Item.find(params[:id]))
+		@chemicals = ItemChemShip.joins(:chemical).select("chemicals.name, chemicals.id").where(item: @item)
+		@allChemicals = Chemical.all
 	end
 	def destroy 
 	    Item.find(params[:id]).destroy
