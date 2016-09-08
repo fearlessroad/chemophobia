@@ -30,6 +30,7 @@ class ItemsController < ApplicationController
 		@item = Item.find(params[:id])
 		@chemicals = ItemChemShip.joins(:chemical).select("chemicals.name, chemicals.id").where(item: @item)
 		@allChemicals = Chemical.all
+		@categories = ChemCat.all
 	end
 	def destroy 
 	    Item.find(params[:id]).destroy

@@ -1,0 +1,4 @@
+ChemCatShip.joins("INNER JOIN chem_cats ON chem_cat_ships.chem_cat_id = chem_cats.id").joins("INNER JOIN chem_subcats ON chem_cat_ships.chem_subcat_id = chem_subcats.id").select("chem_cats.name as cat_name, chem_cats.id as cat_id, chem_subcats.name as subcat_name, chem_subcats.id as subcat_id").where(chemical: Chemical.find(1))
+
+ChemCatShip.joins("chemicals").joins("chem_subcats").select("chemicals.name as chemical_name, chemicals.id as chemical_id, chem_subcats.name as subcat_name, chem_subcats.id as subcat_id").where(chemical: Chemical.find(1))
+

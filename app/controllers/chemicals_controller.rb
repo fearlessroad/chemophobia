@@ -17,7 +17,6 @@ class ChemicalsController < ApplicationController
 		if params[:chemicalSelected] == ""
 			chemical = Chemical.find_by(name: params[:chemicalWritten])
 			if chemical 
-				session[:chemical_id] = chemical.id
 				ItemChemShip.create(item: Item.find(session[:item_id]), chemical: Chemical.find(chemical.id))
 				# redirect_to :back
 					json_message = {:status => 'success', :message => chemical.name+' was successfully added!'}
@@ -68,6 +67,12 @@ class ChemicalsController < ApplicationController
 		@categories = ChemCatShip.joins(:chem_cat).joins(:chem_subcat).select("chem_cats.name as cat_name, chem_cats.id as cat_id, chem_subcats.name as subcat_name, chem_subcats.id as subcat_id").where(chemical: @chemical)
 		msg = {:chemical => @chemical, :categories => @categories}
 		render json: msg
+	end
+	def selectChem
+		@chemical = Chemical.find(params[:chemicalSelected]);
+		@category = ChemCatShip.joins("INNER JOIN chem_cats ON chem_cat_ships.chem_cat_id = chem_cats.id").joins("INNER JOIN chem_subcats ON chem_cat_ships.chem_subcat_id = chem_subcats.id").select("chem_cats.name as cat_name, chem_cats.id as cat_id, chem_subcats.name as subcat_name, chem_subcats.id as subcat_id").where(chemical: @chemical)
+		data = {:chemical => @chemical, :category => @category}
+		render json: data
 	end
 private
 	def chemical_params

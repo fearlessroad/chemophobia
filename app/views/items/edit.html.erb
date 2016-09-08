@@ -1,3 +1,8 @@
+<style>
+	.percentError{
+		border:1px solid red;
+	}
+</style>
 <script>
 
 var editItem = "<input type='file' name='item[image]'><br>";
@@ -24,8 +29,55 @@ var addNewChemical = "<label>IUPAC name</label><input type='text' name='iupac'><
 			}
 		});
 		$("#addNewChemical").click(function(){
-			$("#adding_a_new_chemical").html(addNewChemical);
+			$("#adding_a_new_chemical").slideToggle(1000);
 		});
+		$("#category").change(function(){
+			// var selectedValue = this.value;
+			console.log(this.value);
+			$.post(
+				'/categories/selectCat',
+				$(this).serialize(), 
+				function(data){
+					console.log(data);
+				for (i=0; i<data.subcategories.length; i++)
+				{
+					var id = data.subcategories[i].id
+					var subcategory = "<input type='checkbox' name='subcat[]' value="+id+">"+data.subcategories[i].name+"</input><br>";
+					if (i==0){
+						$('#subcategory').html(subcategory);
+					}
+					else{
+					$('#subcategory').append(subcategory);
+					}
+				}
+				}, 
+				'json');
+			return false;
+		});
+		$("#addExistingChemical").change(function(){
+			$.post(
+				'/chemicals/selectChem',
+				$(this).serialize(),
+				function(data){
+					console.log(data.category[0].cat_name);
+					if ($("#adding_a_new_chemical").css('display')=='none'){
+						$("#adding_a_new_chemical").slideToggle(1000);
+					}
+					$("#add_a_chemical input[name=chemicalWritten]").val(data.chemical.name);
+					$("#add_a_chemical input[name=iupac]").val(data.chemical.iupac);
+					$("#add_a_chemical input[name=formula]").val(data.chemical.formula);
+					$("#add_a_chemical textarea[name=description]").val(data.chemical.description);
+					$("#add_a_chemical input[name=ld50]").val(data.chemical.ld50);
+					$("#add_a_chemical input[name=origin]").val(data.chemical.origin);
+					$("#image_file").html();
+					$("#catSelect").html();
+					$("#subcategory").html();
+					$("#percentage").addClass("percentError");
+				}, 
+				'json');
+			return false; 
+		});
+
 	});
 
 </script>
@@ -66,11 +118,3 @@ var addNewChemical = "<label>IUPAC name</label><input type='text' name='iupac'><
 	</fieldset>
 	</div>
 </div>
-<!-- 	<form action="/items/confirm" method="post">
-		<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-		<button>Confirm Item</button>
-	</form>
-	<form action="/admins/item" method="post">
-		<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-		<button>Add a New Item</button>
-	</form> -->

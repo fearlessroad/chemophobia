@@ -5,7 +5,9 @@ class AdminsController < ApplicationController
 		end
   	end
   	def home
-  		@admin = Admin.find(session[:admin_id])
+  		if session[:admin_id]
+  			@admin = Admin.find(session[:admin_id])
+  		end
 	    @items = Item.all
 	    @chemicals = Chemical.all
 	    @gmos = Gmo.all

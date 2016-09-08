@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   post '/chemicals'=>'chemicals#create'
   post '/chemicals/resetSession'=>'chemicals#resetSession'
   get '/chemicals/new'=>'chemicals#new'
+  post '/chemicals/selectChem' => 'chemicals#selectChem'
   post '/chemicals/:id' => 'chemicals#getInfo'
   get '/chemicals/:id' => 'chemicals#getInfo'
   patch '/chemicals' => 'chemicals#update'
