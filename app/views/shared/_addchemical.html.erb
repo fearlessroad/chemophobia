@@ -1,8 +1,9 @@
 
 	<form id ='add_a_chemical' action='/chemicals' method='post'>
+		<div class="form-group">
 		<input name='authenticity_token' value='<%= form_authenticity_token %>' type='hidden'>
 		<label>Add an existing chemical:</label>
-			<select id = "addExistingChemical" name="chemicalSelected">
+			<select class='form-control' id = "addExistingChemical" name="chemicalSelected">
 				<option value=""></option>
 				<% @allChemicals.each do |chemical| %>
 				<option value="<%=chemical.id%>"><%= chemical.name %></option>
@@ -10,24 +11,25 @@
 			</select><br>
 			<div id="add_existing_chemical"></div>
 		<label>Or add a new chemical:</label>
-		<input id="addNewChemical" type='text' name='chemicalWritten'><br>
+		<input class='form-control' id="addNewChemical" type='text' name='chemicalWritten'><br>
 		<div id="adding_a_new_chemical">
-			<label>IUPAC name</label><input type='text' name='iupac'><br>
-			<label>Formula</label><input type='text' name='formula'><br>
-			<label>Description</label><textarea name='description'></textarea><br>
-			<label>LD50</label><input type='text' name='ld50'><br>
-			<label>Origin</label><input type='text' name='origin'><br>
+			<label>IUPAC name</label><input class='form-control' type='text' name='iupac'><br>
+			<label>Formula</label><input class='form-control' type='text' name='formula'><br>
+			<label>Description</label><textarea class='form-control' name='description'></textarea><br>
+			<label>LD50</label><input class='form-control' type='text' name='ld50'><br>
+			<label>Origin</label><input class='form-control' type='text' name='origin'><br>
 			<label>Image</label><div id="image_file"><input type='file' name='image'></div><br>
 			<label>Category</label><div id="catSelect">
-				<select name="category" id="category">
+				<select class='form-control' name="category" id="category">
 					<option value="" selected="selected"></option>
 				<% @categories.each do |cat| %>
 					<option value="<%=cat.id%>" selected=""><%=cat.name%></option>
 				<% end %>
 				</select></div><br>
 			<label>Subcategories</label><br><div id="subcategory">Please choose a category from the dropdown.</div><br>
-			<label>Percentage</label><input id="percentage"type="text" name="percent"><br>
+			<label>Percentage</label><input class='form-control'  id="percentage"type="text" name="percent"><br>
 		</div>
 		<button id="addchemical">Add Chemical</button>
+		</div>
 	</form>
 

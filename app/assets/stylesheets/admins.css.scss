@@ -1,15 +1,6 @@
 // Place all the styles related to the Admins controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.nav-tabs{
-	background-color:#1aff8c;
-}
-.nav-tabs > li > a:hover{
-	background-color:#00cc7a !important;
-}
-.tab-content{
-	background-color:#1aff8c !important;
-}
 #admin_login{
 	text-align:center;
 	width:960px;
@@ -98,4 +89,10 @@
 }
 .admin h3{
 	font-weight:bold;
+}
+#admin-home{
+	background-image: url('/assets/vegetables.jpg')
+}
+#admin-home-box{
+	height:100vh;
 }

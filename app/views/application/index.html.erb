@@ -1,13 +1,13 @@
 
-
+<%= render partial: '/shared/header.html.erb'%>
 <div id="application">
 	<h1>Welcome to Chem<span class="italic">Query</span>!</h1>
 	<p>Your trusted source for nature's ingredients</p>
 	<a href="/items"><button id="goToApp"><h2>Enter</h2></button></a>
 </div>
-<div id="news" class="other">
-<h1>Tech Spotlight</h1>
-	<div class="newsbox">
+<div id="news" class="other row">
+<!-- <h1>Tech Spotlight</h1> -->
+	<div class="newsbox col-md-5 col-md-offset-1">
 		<h3>Chemical Spotlight</h3>
 		<div class="newsscroll">
 			<%= image_tag(@chemical.image)%>
@@ -18,7 +18,7 @@
 		</div>
 
 	</div>
-	<div class="newsbox">
+	<div class="newsbox col-md-5">
 		<h3>Genetic Modification Spotlight</h3>
 		<p><span class="underline">Name</span> <%= @g.name%></p><br>
 		<p><span class="underline">Description</span> <%=@g.description%></p><br>

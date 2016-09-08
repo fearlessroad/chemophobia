@@ -15,7 +15,7 @@
  */
 
 *{
-font-family: "Playfair Display", serif;
+font-family: "PT Sans", sans-serif;
 margin:0;
 }
 .bold{
@@ -186,8 +186,8 @@ margin-bottom:10px;
 	width:40%;
 	vertical-align:top;
 /*	border:1px solid black;*/
-	display:inline-block;
-	margin:0px 10px 35px 10px;
+/*	display:inline-block;
+	margin:0px 10px 35px 10px;*/
 	line-height:15px;
 }
 .newsbox p{

@@ -1,0 +1,14 @@
+	<div id="header">
+		<ul>
+			<li><a href="/application/index">Home</a></li>
+			<li><a href="/application/index#news">News</a></li>
+			<li><a href="/#about">Mission</a></li>
+			<li><a href="/items">App</a></li>
+			<form action="/items/search" method="get"><input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+			<li class="search"><input type="submit" value="Search"></li>
+			<li class="search">
+				<input type="search" name="item" placeholder="Item name...">
+			</li>
+			</form>
+		</ul>
+	</div>
